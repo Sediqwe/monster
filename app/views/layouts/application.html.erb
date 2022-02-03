@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Translate Site-2022 By Sediqwe</title>
+    <meta charset="utf-8">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    
+    <script src="https://kit.fontawesome.com/7abb47e8ad.js" crossorigin="anonymous"></script>
+  </head>
+
+  <body class="pt-4 text-light bg-secondary">
+  <br>
+  <div id="flash">
+    <% if notice.present? %>
+      <%= render partial: "shared/notice" %>
+    <% end %>
+    <% if error.present? %>
+      <%= render partial: "shared/error" %>
+    <% end %>
+  </div>
+<br>
+  <% if current_user.present? %>
+  Üdvözöllek: <%= current_user.username.capitalize() %> <br>
+  <% else %>
+ 
+  <% end %>
+  <%= render 'shared/menu' %>
+   <div class="container-flex">
+  <%= yield %>
+
+    </div>
+  </body>
+</html>
