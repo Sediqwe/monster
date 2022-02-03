@@ -7,7 +7,7 @@ set :default_stage, "production"
 
 set :application, "miracle"
 set :repo_url, "https://github.com/Sediqwe/miracle.git"
-set :branch, "master"
+set :branch, "main"
 set :deploy_to, "/var/www/miracle"
 set :keep_releases, 3
 set :migration_command, 'db:migrate'

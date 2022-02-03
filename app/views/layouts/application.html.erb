@@ -13,23 +13,7 @@
   </head>
 
   <body class="pt-4 text-light bg-secondary">
-  <br>
-  <div id="flash">
-    <% if notice.present? %>
-      <%= render partial: "shared/notice" %>
-    <% end %>
-    <% if error.present? %>
-      <%= render partial: "shared/error" %>
-    <% end %>
-  </div>
-<br>
-  <% if current_user.present? %>
-  Üdvözöllek: <%= current_user.username.capitalize() %> <br>
-  <% else %>
- 
-  <% end %>
-  <%= render 'shared/menu' %>
-   <div class="container-flex">
+
   <%= yield %>
 
     </div>
