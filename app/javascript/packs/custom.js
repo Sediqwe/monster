@@ -1,5 +1,7 @@
 $(document).on('turbolinks:load', function() {
 
-    $('[data-toggle="tooltip"]').tooltip()
+    $('#sidebarCollapse').on('click', function() {
+        $('#sidebar, #content').toggleClass('active');
+      });
 });
  
