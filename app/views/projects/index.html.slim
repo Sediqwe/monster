@@ -1,0 +1,28 @@
+.page-content.p-5 id="content"
+  h1 Listing projects
+
+  table
+    thead
+      tr
+        th Name
+        th Desc
+        th Active
+        th Private
+        th
+        th
+        th
+
+    tbody
+      - @projects.each do |project|
+        tr
+          td = project.name
+          td = project.desc
+          td = project.active
+          td = project.private
+          td = link_to 'Show', project, class:"btn btn-success text-light"
+          td = link_to 'Edit', edit_project_path(project), class:"btn btn-success text-light"
+          td = link_to 'Destroy', project, data: { confirm: 'Are you sure?' }, method: :delete, class:"btn btn-success text-light"
+
+  br
+
+  = link_to 'New Project', new_project_path
