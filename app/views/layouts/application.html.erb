@@ -14,7 +14,10 @@
 
   <body class="text-dark">
   <%= render 'shared/menu' %>
+   
 <div class="page-content p-5" id="content">
+<%= render 'shared/notice' %>
+    <%= render 'shared/error' %>
   <%= yield %>
 </div>
     </div>

@@ -1,4 +1,16 @@
-<section class="vh-100 bg-image" >
+<button id="sidebarCollapse" type="button" class="btn btn-light bg-white rounded-pill shadow-sm px-4 mb-4"><i class="fa fa-bars mr-2"></i><small class="text-uppercase font-weight-bold">Menü</small></button>  
+<% if @user.errors.any? %>
+
+<ul>
+  <% @user.errors.full_messages.each do |message| %>
+  <div class="alert alert-danger">
+  <li><%= message %></li>
+  </div>
+  <% end %>
+</ul>
+<% end %>
+
+<section class="vh-10 bg-image" >
   <div class="mask d-flex align-items-center h-100 gradient-custom-3">
     <div class="container h-100">
       <div class="row d-flex justify-content-center align-items-center h-100">
@@ -7,35 +19,33 @@
             <div class="card-body p-5">
               <h2 class="text-uppercase text-center mb-5">Regisztráció</h2>
 
-              <form>
-
-                <div class="form-outline mb-4">
-                  <input type="text" id="reg_name" class="form-control form-control-lg" />
-                  <label class="form-label" for="form3Example1cg">Neved</label>
+              <%= form_for @user, url: :sign_create do |f| %>
+              <div class="form-outline mb-4">
+                  <%= f.text_field :username, class:"form-control form-control-lg" %>
+                  <label class="form-label" for="username">Username</label>
                 </div>
+               <div class="form-outline mb-4">
+                <%= f.text_field :email, class:"form-control form-control-lg"  %>
+                <label class="form-label" for="email">E-mail</label>
+              </div>
+              <div class="form-outline mb-4">
+                <%= f.password_field :password , class:"form-control form-control-lg"  %>
+                <label class="form-label" for="password">Password</label>
+              </div>
+              <div class="form-outline mb-4">
+                <%= f.password_field :password_confirmation, class:"form-control form-control-lg"  %>
+                <label class="form-label" for="password_confirmation">Password Confirmation</label>
+              </div>
+            
+                
 
-                <div class="form-outline mb-4">
-                  <input type="email" id="reg_mail" class="form-control form-control-lg" />
-                  <label class="form-label" for="form3Example3cg">E-mail</label>
-                </div>
-
-                <div class="form-outline mb-4">
-                  <input type="password" id="reg_pass_1" class="form-control form-control-lg" />
-                  <label class="form-label" for="form3Example4cg">Jelszó</label>
-                </div>
-
-                <div class="form-outline mb-4">
-                  <input type="password" id="reg_pass_2" class="form-control form-control-lg" />
-                  <label class="form-label" for="form3Example4cdg">Jelszó ismét</label>
-                </div>
-
-
-
+               
                 <div class="d-flex justify-content-center">
-                  <button type="button" class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Regisztrálás</button>
+                    <%= f.button "Regisztrálás", class:"btn btn-success btn-block btn-lg gradient-custom-4 text-body" %></p>
+                    <% end %>
                 </div>
 
-                <p class="text-center text-muted mt-5 mb-0">Már regisztráltál? <a href="/signup" class="fw-bold text-body"><u> Jelentkezz be itt</u></a></p>
+                <p class="text-center text-muted mt-5 mb-0">Már regisztráltál? <a href="/signin" class="fw-bold text-body"><u> Jelentkezz be itt</u></a></p>
 
               </form>
 
@@ -46,4 +56,6 @@
     </div>
   </div>
 </section>
+
+
 
