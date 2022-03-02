@@ -19,7 +19,7 @@
             <div class="card-body p-5">
               <h2 class="text-uppercase text-center mb-5">Regisztráció</h2>
 
-              <%= form_for @user, url: :sign_create do |f| %>
+              <%= form_for @user, html: { autocomplete: "off" } , url: :sign_create do |f| %>
               <div class="form-outline mb-4">
                   <%= f.text_field :username, class:"form-control form-control-lg" %>
                   <label class="form-label" for="username">Username</label>
