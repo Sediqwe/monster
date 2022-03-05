@@ -1,4 +1,8 @@
 
+button.btn.btn-light.bg-white.rounded-pill.shadow-sm.px-4.mb-4 id="sidebarCollapse" 
+  i.fa.fa-bars.mr-2
+  small.text-uppercase.font-weight-bold
+    | Menü
 .d-flex.text-light.justify-content-center.gradient-custom
   h1 Fordítások
 
@@ -7,7 +11,7 @@
 
     - @projects.each do |project|
     
-      .col-md-2.mb-5
+      .col-md-6.mb-5
         .card.text-white.card-has-bg.click-col style="background-image:url('https://picsum.photos/200/300');" 
           img.card-img.d-none alt=("") src="https://picsum.photos/200/300" /
           .card-img-overlay.d-flex.flex-column
@@ -22,10 +26,10 @@
               .media
                 .media-body
                   h3.my-0.text-white.d-block 
-                    = link_to 'Mutat', project, class:"btn btn-secondary text-light mr-2"
-                    = link_to 'Módosít', edit_project_path(project), class:"btn btn-secondary text-light mr-2"
-                    = link_to 'Töröl', project, data: { confirm: 'Biztos vagy benne?' }, method: :delete, class:"btn btn-danger text-light mr-2"
-                  medium
+                    = link_to 'Mutat', project, class:"btn btn-info btn-sm text-light btn-block mr-2"
+                    = link_to 'Módosít', edit_project_path(project), class:"btn btn-sm btn-info btn-block text-light mr-2"
+                    = link_to 'Töröl', project, data: { confirm: 'Biztos vagy benne?' }, method: :delete, class:"btn  btn-sm btn-danger btn-block text-light mr-2"
+                  small
                     = project.created_at
 
 

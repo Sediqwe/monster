@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :uploads
+  get 'feltoltes', to:  'uploads#new'
   get 'home/start'
   get 'sessions/new'
   get 'sessions/create'

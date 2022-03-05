@@ -1,0 +1,29 @@
+- if params[:id].present? 
+  = form_for @upload do |f|
+    - if @upload.errors.any?
+      #error_explanation
+        h2 = "#{pluralize(@upload.errors.count, 'error')} prohibited this upload from being saved:"
+        ul
+          - @upload.errors.full_messages.each do |message|
+            li = message
+
+    .field
+      = f.label "Cím* kötelező"
+      = f.text_field :title
+    .field
+      
+      - if params[:id].present?     
+        = f.hidden_field :project_id, value: params[:id], readonly: true
+    .field 
+      = f.label "Fájl: Kötelező "
+      = f.file_field :txt
+    .field
+      = f.label "Verzió* kötelező"
+      = f.text_area :version
+    .field
+      = f.label :desc
+      = f.text_area :desc
+    .field
+      
+      = f.hidden_field :user_id, value: current_user.id, readonly: true
+    .actions = f.submit "Feltöltés", class: "btn btn-success"
