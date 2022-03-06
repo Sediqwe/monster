@@ -1,20 +1,5 @@
-p#notice = notice
-
-p
-  strong Name:
+h2 
   = @project.name
-
-p
-  strong Desc:
-  = @project.desc
-
-p
-  strong Active:
-  = @project.active
-
-p
-  strong Private:
-  = @project.private
 p
   strong File_Upload 
   = link_to 'Upload', feltoltes_path(id: @project.id)

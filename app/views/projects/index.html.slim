@@ -8,10 +8,9 @@ button.btn.btn-light.bg-white.rounded-pill.shadow-sm.px-4.mb-4 id="sidebarCollap
 
 .container-flow
   .row
-
     - @projects.each do |project|
-    
-      .col-md-6.mb-5
+      = link_to project do
+      .col-12.col-sm-6.col-lg-4.col-xl-2.mb-5
         .card.text-white.card-has-bg.click-col style="background-image:url('https://picsum.photos/200/300');" 
           img.card-img.d-none alt=("") src="https://picsum.photos/200/300" /
           .card-img-overlay.d-flex.flex-column
