@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :uploads
+  #resources :uploads
   get 'feltoltes', to:  'uploads#new'
   get 'home/start'
   get 'sessions/new'
@@ -9,10 +9,14 @@ Rails.application.routes.draw do
   get 'sign/new'
   get 'sign/create'
   get 'file_upload/index'
-  resources :projects
+  #resources :projects
   get 'settings/start'
   root to: 'home#start'
   get 'signin', to:  'sign#signin'
   get 'signup', to:  'sign#signup'
   post 'sessions/create'
+  resources :projects do
+    resources :uploads, shallow: true
+  end
+  
 end

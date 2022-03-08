@@ -8,19 +8,19 @@ class UploadsController < ApplicationController
 
   # GET /uploads/1 or /uploads/1.json
   def show
-    @url = request.path_info
+    
   end
 
   # GET /uploads/new
   def new
     @upload = Upload.new
-    @url = request.path_info
+    
     
   end
 
   # GET /uploads/1/edit
   def edit
-    @url = request.path_info
+    
   end
 
   # POST /uploads or /uploads.json
@@ -68,6 +68,6 @@ class UploadsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def upload_params
-      params.require(:upload).permit(:title, :project_id, :version, :desc, :user_id, :dede, :project, :user, :txt)
+      params.permit(:title, :project_id, :version, :desc, :user_id, :dede, :project, :user, :txt)
     end
 end
