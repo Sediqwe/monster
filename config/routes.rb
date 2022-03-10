@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   get 'signup', to:  'sign#signup'
   post 'sessions/create'
   resources :projects do
-    resources :uploads, shallow: true
+    resources :uploads
   end
   
 end

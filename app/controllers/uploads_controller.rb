@@ -25,14 +25,18 @@ class UploadsController < ApplicationController
 
   # POST /uploads or /uploads.json
   def create
+    byebug
     @upload = Upload.new(upload_params)
-
+    p current_user
+    @upload.user_id = current_user.id
+    @upload.project_id = params[:project_id]
     respond_to do |format|
       if @upload.save
-        format.html { redirect_to upload_url(@upload), notice: "Upload was successfully created." }
+        format.html { redirect_to upload_index_url(@upload), notice: "Upload was successfully created." }
         format.json { render :show, status: :created, location: @upload }
       else
-        format.html { redirect_to feltoltes_path(id: params[:upload][:project_id]), error: "Hibás feltöltés!!"}
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @upload.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -68,6 +72,6 @@ class UploadsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def upload_params
-      params.permit(:title, :project_id, :version, :desc, :user_id, :dede, :project, :user, :txt)
+      params.require(:upload).permit(:title, :project_id, :version, :desc, :txt)
     end
 end
