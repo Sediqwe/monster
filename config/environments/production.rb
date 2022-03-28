@@ -1,6 +1,6 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
-  config.hosts << "miracle.sediqwe.eu"
+  config.hosts << "gep.monster"
 
   # Code is not reloaded between requests.
   config.cache_classes = true
