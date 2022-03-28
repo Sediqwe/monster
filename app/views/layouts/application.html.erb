@@ -13,18 +13,9 @@
   </head>
 
   <body class="text-dark">
-  <%= render 'shared/menu' %>
-  
-<div class="page-content" id="content">
-<%  if @menu_active %>
-  <%= render 'shared/extramenu' %>
-  <% end %>
-<%= render 'shared/notice' %>
-    <%= render 'shared/error' %>
-    
-  <%= yield %>
-  
-</div>
+    <div class="page-content" id="content">
+      <%= yield %>
+    </div>
     </div>
   </body>
 </html>
