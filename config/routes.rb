@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   resources :games
   get 'sessions/new'
   get 'sessions/create'
-  get 'login/signin'
+  get 'login/signin', to: 'sessions#new'
   get 'login/signout'
   get 'login/reg'
 root 'home#start'

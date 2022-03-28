@@ -4,13 +4,13 @@ class SessionsController < ApplicationController
 
   def create
 
-    user = User.find_by(name: user_params[:name]).try(:authenticate, user_params[:password])
+    user = User.find_by(name: user_params[:name].downcase).try(:authenticate, user_params[:password])
     if user
       session[:user_id] = user.id
       redirect_to root_url, notice: "Belépve!"
     else
      flash.now[:login_error] = "invalid username or password"
-     render "new"
+     render 'new'
     end
    end
    
