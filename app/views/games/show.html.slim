@@ -1,0 +1,21 @@
+p#notice = notice
+
+p
+  strong Name:
+  = @game.name
+
+p
+  strong Link:
+  = @game.link
+
+p
+  strong Description:
+  = @game.description
+
+p
+  strong Active:
+  = @game.active
+
+=> link_to 'Edit', edit_game_path(@game)
+'|
+=< link_to 'Back', games_path

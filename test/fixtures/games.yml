@@ -2,14 +2,12 @@
 
 one:
   name: MyString
-  password_digest: MyString
-  email: MyString
-  admin: false
+  link: MyString
+  description: MyText
   active: false
 
 two:
   name: MyString
-  password_digest: MyString
-  email: MyString
-  admin: false
+  link: MyString
+  description: MyText
   active: false

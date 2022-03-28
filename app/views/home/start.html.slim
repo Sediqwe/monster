@@ -1,2 +1,5 @@
 h1 Home#start
 p Find me in app/views/home/start.html.slim
+- if current_user.present?
+    |Üdvözöllek: 
+    = current_user.name.capitalize()

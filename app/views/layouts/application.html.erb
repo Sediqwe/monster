@@ -12,10 +12,20 @@
     <script src="https://kit.fontawesome.com/7abb47e8ad.js" crossorigin="anonymous"></script>
   </head>
 
-  <body class="text-dark">
+  <body class="text-dark ">
     <%= render 'shared/menu' %>
+    <div class="container-fluid pt-5">
     <div class="page-content" id="content">
-      <%= yield %>
+    <div id="flash">
+    <% if notice.present? %>
+      <%= render partial: "shared/notice" %>
+    <% end %>
+    <% if error.present? %>
+      <%= render partial: "shared/error" %>
+    <% end %>
+  </div></div>
+<div class="p-5">
+      <%= yield  %>
     </div>
     </div>
   </body>

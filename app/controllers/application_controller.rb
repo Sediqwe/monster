@@ -11,7 +11,7 @@ end
   private
 def authorized?
   return if current_user.present?
-  flash[:error] = 'Na előbb lépjél be légyszi.'
+  flash[:error] = 'Előbb lépj be!.'
   redirect_to signin_path
   end
 end

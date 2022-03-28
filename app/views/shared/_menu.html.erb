@@ -7,8 +7,15 @@
   <div class="collapse navbar-collapse" id="navbarsExampleDefault">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" href="#">Főoldal </a>
+      <%= link_to "Főoldal", root_path() , class: "nav-link" %>  
       </li>
+      <% if current_user.present? %>
+      <li class="nav-item">
+      <%= link_to "Kilépés", login_signout_path() , class: "nav-link" %>
+        
+      </li>
+      <% else %>
+
       <li class="nav-item">
       <%= link_to "Belépés", login_signin_path() , class: "nav-link" %>
         
@@ -16,9 +23,10 @@
       <li class="nav-item">
         <%= link_to "Regisztráció", login_reg_path() , class: "nav-link" %>
       </li>
+      <% end %>
       <li class="nav-item">
       
-        <a class="nav-link" href="#" disable>Fordítások</a>
+        <%= link_to "Fordítások", games_path , class: "nav-link" %>
       </li>
        <li class="nav-item">
         <a class="nav-link" href="#">Forum</a>
