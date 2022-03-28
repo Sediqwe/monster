@@ -62,7 +62,7 @@
 set :rails_env, :production
 append :linked_files,  "config/master.key", "config/credentials/production.key"
 
-server "miracle.sediqwe.eu",
+server "gep.monster",
        user: "deploy",
        roles: %w{web app db},
        ssh_options: {
