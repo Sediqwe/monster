@@ -1,7 +1,7 @@
 p#notice = notice
 
 p
-  strong Name:
+  strong Név:
   = @game.name
 
 p
@@ -9,12 +9,20 @@ p
   = @game.link
 
 p
-  strong Description:
+  strong Leírás:
   = @game.description
 
+
+p 
+  |File: 
+  - if @game.game_file.present?
+    = link_to "letöltés", rails_blob_path(@game.game_file, disposition: :attachment) 
 p
-  strong Active:
-  = @game.active
+  - @game.game_images.each do |file| 
+    .card
+      = image_tag file.variant(resize: "600x500")
+      br
+      = link_to "letöltés", rails_blob_path(file, disposition: :attachment) 
 
 => link_to 'Edit', edit_game_path(@game)
 '|

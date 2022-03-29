@@ -16,6 +16,9 @@
     = f.label :description
     = f.text_area :description
   .field
-    = f.label :active
-    = f.check_box :active
+    = f.label :game_file
+    = f.file_field :game_file
+  .field
+    = f.label :game_images
+    = f.file_field :game_images, multiple: true
   .actions = f.submit
