@@ -25,13 +25,13 @@ p
       -@game.uploads.each do |t|
         tr
           td  
-            = @game.name
+            = 
           td
             = t.version 
           td
             = User.find(t.user_id).name
           td
-           =t.inspect
+           =link_to "letöltés", rails_blob_path(t.game_files.last, disposition: :attachment)
             
    
 
