@@ -11,18 +11,29 @@ p
 p
   strong Leírás:
   = @game.description
-
-
 p 
-  |File: 
-  - if @game.game_file.present?
-    = link_to "letöltés", rails_blob_path(@game.game_file, disposition: :attachment) 
-p
-  - @game.game_images.each do |file| 
-    .card
-      = image_tag file.variant(resize: "600x500")
-      br
-      = link_to "letöltés", rails_blob_path(file, disposition: :attachment) 
+  strong A rendszerben lévő feltöltések ehez a játékhoz: 
+  table class="table table-bordered table-dark"
+    thead
+      tr
+        th scope="col" Game
+        th scope="col" Version
+        th scope="col" Uploader
+        th scope="col" Letöltés
+    
+    tbody
+      -@game.uploads.each do |t|
+        tr
+          td  
+            = @game.name
+          td
+            = t.version 
+          td
+            = User.find(t.user_id).name
+          td
+           =t.inspect
+            
+   
 
 => link_to 'Edit', edit_game_path(@game)
 '|

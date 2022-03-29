@@ -14,10 +14,9 @@ class UploadsTest < ApplicationSystemTestCase
     visit uploads_url
     click_on "New Upload"
 
-    fill_in "Desc", with: @upload.desc
-    fill_in "Project", with: @upload.project_id
-    fill_in "Title", with: @upload.title
-    fill_in "User", with: @upload.user_id
+    fill_in "Description", with: @upload.description
+    fill_in "Game", with: @upload.game_id
+    fill_in "Name", with: @upload.name
     fill_in "Version", with: @upload.version
     click_on "Create Upload"
 
@@ -29,10 +28,9 @@ class UploadsTest < ApplicationSystemTestCase
     visit uploads_url
     click_on "Edit", match: :first
 
-    fill_in "Desc", with: @upload.desc
-    fill_in "Project", with: @upload.project_id
-    fill_in "Title", with: @upload.title
-    fill_in "User", with: @upload.user_id
+    fill_in "Description", with: @upload.description
+    fill_in "Game", with: @upload.game_id
+    fill_in "Name", with: @upload.name
     fill_in "Version", with: @upload.version
     click_on "Update Upload"
 

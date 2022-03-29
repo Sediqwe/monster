@@ -1,4 +1,4 @@
 class Game < ApplicationRecord
-    has_one_attached :game_file
-    has_many_attached :game_images
+    has_many :uploads
+    has_many_attached :game_files
 end

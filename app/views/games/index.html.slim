@@ -10,6 +10,10 @@ br
     .card-content
       a href="#!" 
       h2 = game.name
+      h2 
+        |Feltöltött fájlok:
+        =game.uploads.size
+            
       = link_to 'Edit', edit_game_path(game),  class: "btn btn-success btn-block"
       = link_to 'Destroy', game, data: { confirm: 'Are you sure?' }, method: :delete,  class: "btn btn-danger text-light btn-block"
 
