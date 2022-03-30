@@ -29,9 +29,9 @@ p
           td
             = t.version 
           td
-            = User.find(t.user_id).name
+            = t.user.name
           td
-           =link_to "letöltés", rails_blob_path(t.game_files.last, disposition: :attachment)
+           =link_to "letöltés", rails_blob_path(t.game_files, disposition: :attachment)
             
    
 
