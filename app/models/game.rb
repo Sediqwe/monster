@@ -1,5 +1,5 @@
 class Game < ApplicationRecord
-    has_many :uploads
-    has_many_attached :game_files   
-    has_one_attached :image 
+    has_many :uploads , dependent: :delete_all
+    has_many_attached :game_files , dependent: :delete_all
+    has_one_attached :image , dependent: :delete_all 
 end

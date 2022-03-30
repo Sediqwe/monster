@@ -34,7 +34,6 @@ gem 'net-scp'
 gem "better_errors"
 
 gem 'pg'
-gem 'httparty'
 gem 'ransack'
 gem 'jquery-rails'
 # Reduces boot times through caching; required in config/boot.rb

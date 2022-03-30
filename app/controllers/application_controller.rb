@@ -14,6 +14,7 @@ def authorized?
   flash[:error] = 'Előbb lépj be!.'
   redirect_to login_signin_url
   end
+  
   def record_attempts(note)
     @activity = ActivityLog.new
     @activity.note = note

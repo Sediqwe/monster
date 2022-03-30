@@ -3,11 +3,13 @@ class GamesController < ApplicationController
 
   # GET /games or /games.json
   def index
-    @games = Game.all
+    @q = Game.ransack(params[:q])
+    @games = @q.result(distinct: true)
   end
 
   # GET /games/1 or /games/1.json
   def show
+    
   end
 
   # GET /games/new
@@ -17,6 +19,7 @@ class GamesController < ApplicationController
 
   # GET /games/1/edit
   def edit
+    
   end
 
   # POST /games or /games.json
@@ -25,6 +28,8 @@ class GamesController < ApplicationController
 
     respond_to do |format|
       if @game.save
+        record_activity("Új játék felvéve: #{@game.name}")
+
         format.html { redirect_to game_url(@game), notice: "Game was successfully created." }
         format.json { render :show, status: :created, location: @game }
       else
@@ -37,7 +42,9 @@ class GamesController < ApplicationController
   # PATCH/PUT /games/1 or /games/1.json
   def update
     respond_to do |format|
+      record_activity("Játék módosítva - Előtte: #{@game.name}")
       if @game.update(game_params)
+        record_activity("Játék módosítva - Utána: #{@game.name}")
         format.html { redirect_to game_url(@game), notice: "Game was successfully updated." }
         format.json { render :show, status: :ok, location: @game }
       else
@@ -49,7 +56,9 @@ class GamesController < ApplicationController
 
   # DELETE /games/1 or /games/1.json
   def destroy
-    @game.destroy
+    
+      record_activity("Játék eltávolítva: #{@game.name}")
+      @game.destroy
 
     respond_to do |format|
       format.html { redirect_to games_url, notice: "Game was successfully destroyed." }

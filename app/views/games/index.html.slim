@@ -1,6 +1,11 @@
 h1 Fordítások:
-= link_to 'Új játék', new_game_path, class: "btn btn-success"
+= link_to 'Új játék', new_game_path, class: "btn btn-success" if current_user.present?
 br
+
+= search_form_for @q do |f|
+  = f.search_field :name_cont, placeholder: "Keresés..."
+  = f.submit "Elküld"
+
 - @games.each do |game|
   .card
     .card-img style="background-image: url(#{ rails_blob_path(game.image)  if game.image.attached?});" 
@@ -14,8 +19,7 @@ br
         |Feltöltött fájlok:
         =game.uploads.size
             
-      = link_to 'Edit', edit_game_path(game),  class: "btn btn-success btn-block"
-      = link_to 'Destroy', game, data: { confirm: 'Are you sure?' }, method: :delete,  class: "btn btn-danger text-light btn-block"
+      
 
 
 
