@@ -6,35 +6,42 @@
 
   <div class="collapse navbar-collapse" id="navbarsExampleDefault">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item">
-      <%= link_to "Főoldal", root_path() , class: "nav-link" %>  
+      <li class="nav-item <%= (url_for(only_path: true)) == "/" ? "active" : "" %> ">
+      
+      <%= link_to "Főoldal ", root_path() , class: "nav-link" %>  
       </li>
       <% if current_user.present? %>
-      <li class="nav-item">
-      <%= link_to "Kilépés", login_signout_path() , class: "nav-link" %>
+      <li class="nav-item <%= (url_for(only_path: true)) == "/" ? "active" : "" %> ">
+       <li class="nav-item <%= (url_for(only_path: true)) == "/uploads" ? "active" : "" %> ">
+      
+        <%= link_to "Feltöltés", uploads_path , class: "nav-link" %>
+      </li>
+      
         
       </li>
       <% else %>
 
-      <li class="nav-item">
+      <li class="nav-item <%= (url_for(only_path: true)) == "/sessions/new" ? "active" : "" %> " >
       <%= link_to "Belépés", login_signin_path() , class: "nav-link" %>
         
       </li>
-      <li class="nav-item">
+      <li class="nav-item <%= (url_for(only_path: true)) == "/login/reg" ? "active" : "" %> ">
         <%= link_to "Regisztráció", login_reg_path() , class: "nav-link" %>
       </li>
       <% end %>
-      <li class="nav-item">
+      <li class="nav-item <%= (url_for(only_path: true)) == "/games" ? "active" : "" %> ">
       
         <%= link_to "Fordítások", games_path , class: "nav-link" %>
       </li>
-       <li class="nav-item">
       
-        <%= link_to "Feltöltés", uploads_path , class: "nav-link" %>
-      </li>
        <li class="nav-item">
         <a class="nav-link" href="#">Forum</a>
+        
       </li>
+      <% if current_user.present? %>
+      <%= link_to "Kilépés", login_signout_path() , class: "nav-link text-light" %>
+      <% else %>
+      <% end %>>
     </ul>
     <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="text" placeholder="?" aria-label="Search">

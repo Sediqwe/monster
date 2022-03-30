@@ -1,22 +1,19 @@
-h1 Sessions#new
-p Find me in app/views/sessions/new.html.slim
-
-<h1>Login</h1>
+<h1>Bejelentkezés:</h1>
  
  - if flash[:login_error] 
     p
         = flash[:login_error]
 
  
-= form_for :session, url: :sessions_create do |f|
+= form_for :session,:html => {:class => 'form-signin'} , url: :sessions_create do |f|
  
   
     = f.label :name
-    = f.text_field :name
+    = f.text_field :name,  class: "form-control"
   
     = f.label :password
-    = f.password_field :password
+    = f.password_field :password,  class: "form-control"
   
- 
-    = f.button "Login"
+    br
+    = f.button "Belépés", class: "btn btn-success btn-block"
  

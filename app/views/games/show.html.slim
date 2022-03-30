@@ -12,11 +12,10 @@ p
   strong Leírás:
   = @game.description
 p 
-  strong A rendszerben lévő feltöltések ehez a játékhoz: 
+  strong A rendszerben lévő feltöltések ehhez a játékhoz: 
   table class="table table-bordered table-dark"
     thead
       tr
-        th scope="col" Game
         th scope="col" Version
         th scope="col" Uploader
         th scope="col" Letöltés
@@ -24,8 +23,7 @@ p
     tbody
       -@game.uploads.each do |t|
         tr
-          td  
-            = 
+          
           td
             = t.version 
           td

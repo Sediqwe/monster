@@ -7,9 +7,12 @@ class SessionsController < ApplicationController
     user = User.find_by(name: user_params[:name].downcase).try(:authenticate, user_params[:password])
     if user
       session[:user_id] = user.id
+      record_activity("Beléptetve: #{user.name} (ID:##{user.id})")
       redirect_to root_url, notice: "Belépve!"
     else
+      record_attempts("Hibás belépés")
      flash.now[:login_error] = "invalid username or password"
+     
      render 'new'
     end
    end

@@ -1,6 +1,6 @@
 class UploadsController < ApplicationController
   before_action :set_upload, only: %i[ show edit update destroy ]
-
+  before_action :authorized?
   # GET /uploads or /uploads.json
   def index
     @uploads = Upload.all
@@ -25,7 +25,8 @@ class UploadsController < ApplicationController
     @upload.user_id = current_user.id
     respond_to do |format|
       if @upload.save
-        format.html { redirect_to upload_url(@upload), notice: "Upload was successfully created." }
+        record_activity("Sikeres feltöltés: #{ Game.find(@upload.game_id).name} Version: #{@upload.version}")
+        format.html { redirect_to upload_url(@upload), notice: "Sikeres feltöltés." }
         format.json { render :show, status: :created, location: @upload }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -36,9 +37,11 @@ class UploadsController < ApplicationController
 
   # PATCH/PUT /uploads/1 or /uploads/1.json
   def update
+    record_activity("Sikeres feltöltés módosítás - Előtt: #{ Game.find(@upload.game_id).name} Version: #{@upload.version}, Desc: Version: #{@upload.description}")
     respond_to do |format|
       if @upload.update(upload_params)
-        format.html { redirect_to upload_url(@upload), notice: "Upload was successfully updated." }
+        record_activity("Sikeres feltöltés módosítás - Után: #{ Game.find(@upload.game_id).name} Version: #{@upload.version}, Desc: Version: #{@upload.description}")
+        format.html { redirect_to upload_url(@upload), notice: "A feltöltés módosítva." }
         format.json { render :show, status: :ok, location: @upload }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -49,10 +52,11 @@ class UploadsController < ApplicationController
 
   # DELETE /uploads/1 or /uploads/1.json
   def destroy
+    record_activity("Feltöltés törlés: #{ Game.find(@upload.game_id).name} Version: #{@upload.version}")
     @upload.destroy
 
     respond_to do |format|
-      format.html { redirect_to uploads_url, notice: "Upload was successfully destroyed." }
+      format.html { redirect_to uploads_url, notice: "A feltöltés törölve." }
       format.json { head :no_content }
     end
   end
