@@ -12,7 +12,8 @@ class SessionsController < ApplicationController
       redirect_to root_url, notice: "Belépve!"
     else
       record_attempts("Hibás belépés")
-     flash.now[:login_error] = "invalid username or password"
+      number = ActivityLog.find_by(ip_address: request.env['REMOTE_ADDR'])
+     flash.now[:login_error] = "Hibás felhasználó / jelszó páros #{number}"
      
      render 'new'
     end
