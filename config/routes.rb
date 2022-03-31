@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'user_settings', to: "user_settings#index"
+  
   resources :uploads
   resources :games
   get 'sessions/new'

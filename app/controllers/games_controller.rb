@@ -1,6 +1,6 @@
 class GamesController < ApplicationController
   before_action :set_game, only: %i[ show edit update destroy ]
-
+  before_action :authorized?, only: %i[edit update destroy]
   # GET /games or /games.json
   def index
     @q = Game.ransack(params[:q])
@@ -9,7 +9,7 @@ class GamesController < ApplicationController
 
   # GET /games/1 or /games/1.json
   def show
-    
+    @user = Game.friendly.find(params[:id])
   end
 
   # GET /games/new
@@ -25,7 +25,7 @@ class GamesController < ApplicationController
   # POST /games or /games.json
   def create
     @game = Game.new(game_params)
-
+    @game.user_id = current_user.id
     respond_to do |format|
       if @game.save
         record_activity("Új játék felvéve: #{@game.name}")
@@ -69,7 +69,7 @@ class GamesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_game
-      @game = Game.find(params[:id])
+      @game = Game.friendly.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.

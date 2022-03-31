@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_15_190317) do
+ActiveRecord::Schema.define(version: 2022_03_31_143811) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,8 +36,72 @@ ActiveRecord::Schema.define(version: 2021_04_15_190317) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
-  
+  create_table "activity_logs", force: :cascade do |t|
+    t.string "user_id"
+    t.string "browser"
+    t.string "ip_address"
+    t.string "controller"
+    t.string "action"
+    t.string "params"
+    t.string "note"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "friendly_id_slugs", force: :cascade do |t|
+    t.string "slug", null: false
+    t.integer "sluggable_id", null: false
+    t.string "sluggable_type", limit: 50
+    t.string "scope"
+    t.datetime "created_at"
+    t.index ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true
+    t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
+    t.index ["sluggable_type", "sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_type_and_sluggable_id"
+  end
+
+  create_table "games", force: :cascade do |t|
+    t.string "name"
+    t.string "link_steam"
+    t.text "description"
+    t.boolean "active"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "link_epic"
+    t.string "link_other"
+  end
+
+  create_table "login_attempts", force: :cascade do |t|
+    t.string "ip"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "uploads", force: :cascade do |t|
+    t.string "name"
+    t.string "version"
+    t.text "description"
+    t.bigint "game_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id"
+    t.index ["game_id"], name: "index_uploads_on_game_id"
+    t.index ["user_id"], name: "index_uploads_on_user_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "name"
+    t.string "password_digest"
+    t.string "email"
+    t.boolean "admin"
+    t.boolean "active"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.boolean "uploader"
+    t.string "slug"
+    t.index ["slug"], name: "index_users_on_slug", unique: true
+  end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  
+  add_foreign_key "uploads", "games"
+  add_foreign_key "uploads", "users"
 end

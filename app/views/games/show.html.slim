@@ -4,16 +4,26 @@ p
   strong Név:
   = @game.name
 
-p
-  strong Link:
-  = @game.link
+- if @game.link_steam.present?
+  p
+    strong Steam link:
+    = @game.link_steam
+- if @game.link_epic.present?
+  p
+    strong Epic link:
+    = @game.link_epic
+- if @game.link_other.present?
+  p
+    strong Egyéb link:
+    = @game.link_other
 
-p
-  strong Leírás:
-  = @game.description
+- if @game.description.present?
+  p
+    strong Leírás:
+    = @game.description
 p 
   strong A rendszerben lévő feltöltések ehhez a játékhoz: 
-  table class="table table-bordered table-dark"
+  table class="table table-bordered table-success col-4"
     thead
       tr
         th scope="col" Version
@@ -29,10 +39,10 @@ p
           td
             = t.user.name
           td
-           =link_to "letöltés", rails_blob_path(t.game_files, disposition: :attachment)
+           =link_to "letöltés", rails_blob_path(t.game_files, disposition: :attachment) , class: "btn btn-success  text-light"
             
    
-
-=> link_to 'Edit', edit_game_path(@game)
+- if current_user.present?
+  => link_to 'Edit', edit_game_path(@game), class: "btn btn-success text-light"
 '|
-=< link_to 'Back', games_path
+=< link_to 'Back', games_path, class: "btn btn-success  text-light"

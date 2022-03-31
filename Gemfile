@@ -5,6 +5,7 @@ gem 'image_processing'
 gem 'will_paginate', '~> 3.1.0'
 ruby '2.7.2'
 gem 'active_storage_validations'
+gem 'friendly_id', '~> 5.4.0'
 gem 'slim-rails'
 gem 'simple_form'
 gem "font-awesome-rails"

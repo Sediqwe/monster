@@ -11,7 +11,13 @@
     = f.text_field :name
   .field
     = f.label "Steam link:"
-    = f.text_field :link
+    = f.text_field :link_steam
+  .field
+    = f.label "Epic link:"
+    = f.text_field :link_epic
+  .field
+    = f.label "Egyéb link:"
+    = f.text_field :link_other
   .field
     = f.label "Rövid leírás"
     = f.text_area :description

@@ -49,9 +49,9 @@ body {
 		width: 100%;
 		background-color: #fff;
 		transition: opacity .2s ease;
-		background-position: center center;
+		
 		background-repeat: no-repeat;
-		background-size: cover;
+		background-size: 100%;
 		
 		& .overlay {
 			position: absolute;

@@ -43,9 +43,14 @@
       <% else %>
       <% end %>>
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="text" placeholder="?" aria-label="Search">
-      <button class="btn btn-secondary my-2 my-sm-0" type="submit">Keresés</button>
-    </form>
+    <% if current_user.present? %>
+    <div class=" text-light my-2 my-lg-0"">
+    <%=link_to user_settings_path do %>
+      <i class="bi bi-gear fa-3x text-light"></i>
+    
+      <% end %>
+      <% end %>
+    </div>
+   
   </div>
 </nav>
