@@ -27,7 +27,7 @@ p
     thead
       tr
         th scope="col" Version
-        th scope="col" Uploader
+        th scope="col" Translater
         th scope="col" Letöltés
     
     tbody
@@ -37,7 +37,7 @@ p
           td
             = t.version 
           td
-            = t.user.name
+            = t.translater if t.translater.present?
           td
            =link_to "letöltés", rails_blob_path(t.game_files, disposition: :attachment) , class: "btn btn-success  text-light"
             
