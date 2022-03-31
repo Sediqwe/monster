@@ -10,15 +10,16 @@ $(document).on('turbolinks:load', function() {
       });
       $('#letoltes_gomb').on('click', function(){
         var adat = $(this).attr('datagame');
+        var done = $(this).attr('done');
         $.ajax({
           url: "/download",
           type: "POST",
-          data: { product: { id: adat, done: 1} },
+          data: { product: { id: adat, done: done} },
           success: function(data) {
-              alert("OK" + data.valami);
+            //  alert("OK" + data.valami);
           },
           error: function(data) {
-             alert("ERROR" + data.valami);
+            // alert("ERROR" + data.valami);
 
           }
         })
