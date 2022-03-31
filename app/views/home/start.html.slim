@@ -2,3 +2,22 @@ h1 Kezdőoldal
 - if current_user.present?
     h3 Be vagy lépve: 
     h3 = current_user.name.capitalize()
+
+
+
+.container.shadow
+    
+    .row.justify-content-center
+        .card.shadow-nohover
+            .card-header
+                h5.card-title.text-dark
+                    i class="bi bi-power pr4" 
+                        | Gépi Magyarítások 2022
+            .card-block.text-dark
+                p.card-text Első hír
+                p Új feltöltés:
+                p Új Játék:
+                p Legtöbb letöltés
+            .card-footer.text-dark
+                p #2022.03.31 
+                p.fw-bold Powered by Ruby On Rails
