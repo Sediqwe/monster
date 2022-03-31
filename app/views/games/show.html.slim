@@ -1,8 +1,8 @@
 p#notice = notice
 
-p
-  strong Név:
+h1
   = @game.name
+
 
 - if @game.link_steam.present?
   p
@@ -26,8 +26,9 @@ p
   table class="table table-bordered table-success col-4"
     thead
       tr
-        th scope="col" Version
-        th scope="col" Translater
+        th scope="col" Verzió
+        th scope="col" Fordító
+        th scope="col" Letöltve
         th scope="col" Letöltés
     
     tbody
@@ -38,11 +39,14 @@ p
             = t.version 
           td
             = t.translater if t.translater.present?
+          td 
+            |Letöltve: 
+            = Download.where(game_id: @game.id).size 
+            |X
           td
-           =link_to "letöltés", rails_blob_path(t.game_files, disposition: :attachment) , class: "btn btn-success  text-light"
-            
-   
-- if current_user.present?
+            =link_to "Letöltés", rails_blob_path(t.game_files, disposition: :attachment) , id: "letoltes_gomb", datagame: "#{@game.id}" ,class: "btn btn-success  text-light"
+
+- if current_user.present? & current_user.admin?
   => link_to 'Edit', edit_game_path(@game), class: "btn btn-success text-light"
 '|
 =< link_to 'Back', games_path, class: "btn btn-success  text-light"

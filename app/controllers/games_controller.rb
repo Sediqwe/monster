@@ -53,6 +53,15 @@ class GamesController < ApplicationController
       end
     end
   end
+  def download
+    i = Download.new
+    i.game_id = je_params[:id]
+    if i.save
+      render json: { valami: 'OK' }
+    else
+      render json: { valami: 'NOK' }
+    end
+   end
 
   # DELETE /games/1 or /games/1.json
   def destroy
@@ -75,5 +84,9 @@ class GamesController < ApplicationController
     # Only allow a list of trusted parameters through.
     def game_params
       params.require(:game).permit(:name, :link_steam, :link_epic, :link_other, :description, :image)
+    end
+
+    def je_params
+      params.require(:product).permit(:id, :done)
     end
 end
