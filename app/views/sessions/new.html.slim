@@ -5,15 +5,27 @@
         = flash[:login_error]
 
  
-= form_for :session,:html => {:class => 'form-signin'} , url: :sessions_create do |f|
- 
-  
-    = f.label :name
-    = f.text_field :name,  class: "form-control"
-  
-    = f.label :password
-    = f.password_field :password,  class: "form-control"
-  
-    br
-    = f.button "Belépés", class: "btn btn-success btn-block"
- 
+.form-bg
+  .container
+    .row
+      .col-lg-4.col-lg-offset-4.col-md-6.col-md-offset-3
+        .form-container
+          .form-icon
+            i.fa.fa-user
+          h3.title Belépés
+          span.create-account
+            a href="/login/reg"  Új regisztráció
+          = form_for :session,:html => {:class => 'form-horizontal clearfix'} , url: :sessions_create do |f|
+            .form-group
+                span.input-icon
+                    i.fa.fa-user
+                = f.text_field :name,  class: "form-control"
+            .form-group
+              span.input-icon
+                i.fa.fa-lock
+              = f.password_field :password,  class: "form-control"
+            button.btn.btn-default type="submit"
+                    i.fa.fa-arrow-right
+                    |Belépés
+            span.forgot
+              

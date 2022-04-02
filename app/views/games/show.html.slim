@@ -1,6 +1,6 @@
 p#notice = notice
 
-h1
+h1.text-dark
   = @game.name
 
 
@@ -21,6 +21,8 @@ h1
   p
     strong Leírás:
     = @game.description
+p = link_to "Fájl feltöltés", new_upload_path(id: @game.id) , class: "btn btn-success"
+
 p 
   strong A rendszerben lévő feltöltések ehhez a játékhoz: 
   table class="table table-bordered table-success col-4"
@@ -41,7 +43,7 @@ p
             = t.translater if t.translater.present?
           td 
             |Letöltve: 
-            = Download.where(game_id: @game.id).size 
+            = Download.where(upload_id: t.id).size 
             |X
           td
             =link_to "Letöltés", rails_blob_path(t.game_files, disposition: :attachment) , id: "letoltes_gomb", datagame: "#{@game.id}", done: "#{t.game_files.id}" ,class: "btn btn-success  text-light"

@@ -14,8 +14,6 @@ class LoginController < ApplicationController
    
   
   def signout
-    record_activity("Kiléptetve: #{current_user.name} (ID:##{current_user.id})")
-
     session[:user_id] = nil
     redirect_to root_url, notice: "Kilépés OK!"
   end

@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :programs
+  resources :translaters
+  resources :platforms
   get 'user_settings', to: "user_settings#index"
   post 'download', to: "games#download"
   resources :uploads

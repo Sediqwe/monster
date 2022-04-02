@@ -4,4 +4,5 @@ class Game < ApplicationRecord
     has_one_attached :image , dependent: :delete_all
     extend FriendlyId
     friendly_id :name, use: :slugged
+    
 end

@@ -7,19 +7,51 @@
           li = message
 
   .field
-    = f.label "Válassz játékot"
-    = f.select(:game_id, Game.all.collect {|u| [u.name, u.id]}, :prompt => 'Select')
+    - if params[:id].nil?
+      = f.label "Válassz játékot"
+      = f.select(:game_id, Game.all.collect {|u| [u.name, u.id]}, html: {class: 'form-control col-1'}, :prompt => 'Válassz')
+    - else
+      -if url_for(only_path: true).include?('edit')
+      
+      - else
+        H1 = Game.find(params[:id]).name 
+        |ID:
+        =f.hidden_field :game_id, value: params[:id]
+      
+
   .field
     = f.label :version
-    = f.text_field :version
+    = f.text_field :version, class: 'form-control col-1'
   .field
     = f.label "Készítő:"
-    = f.text_field :translater
+    = f.select(:translater_id,  Translater.all.collect {|u| [u.name, u.id]}, :prompt => 'Válassz')
+    = link_to new_translater_path() do
+      .btn.btn-success
+        i.bi.bi-plus-square.pr-1
+        | Új
+  .field
+    = f.label "Fordító program:"
+    = f.select(:program_id, Program.all.collect {|u| [u.name, u.id]}, :prompt => 'Válassz')
+    = link_to new_program_path do
+      .btn.btn-success.ml-2
+        i.bi.bi-plus-square.pr-1
+        | Új
+
+  .field
+    = f.label "Platform:"
+    = f.select(:platform_id, Platform.all.collect {|u| [u.name, u.id]}, :prompt => 'Válassz')
+    = link_to  new_platform_path do
+      .btn.btn-success.ml-2
+        i.bi.bi-plus-square.pr-1
+        | Új
+      
+        
+    
   .field
     = f.label :description
-    = f.text_area :description
+    = f.text_area :description, class: 'form-control col-5'
   .field
     = f.label :game_file
-    = f.file_field :game_files
+    = f.file_field :game_files, class: 'form-control col-5'
   
   .actions = f.submit

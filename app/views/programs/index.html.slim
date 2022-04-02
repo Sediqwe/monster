@@ -1,0 +1,21 @@
+h1 Listing uploads
+
+table
+  thead
+    tr
+      th Name
+     
+      th
+
+  tbody
+    - @programs.each do |program|
+      tr
+        td = program.name
+        
+        td = link_to 'Show', program
+        td = link_to 'Edit', edit_program_path(program)
+        td = link_to 'Destroy', program, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Program', new_program_path
