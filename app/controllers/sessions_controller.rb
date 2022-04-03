@@ -8,6 +8,7 @@ class SessionsController < ApplicationController
     user = User.find_by(name: user_params[:name].downcase).try(:authenticate, user_params[:password])
     if user
       session[:user_id] = user.id
+      session[:admin] = user.admin
       record_activity("Beléptetve: #{user.name} (ID:##{user.id})")
       redirect_to root_url, notice: "Belépve!"
     else
