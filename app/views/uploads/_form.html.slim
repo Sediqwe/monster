@@ -24,14 +24,14 @@
     = f.text_field :version, class: 'form-control col-1'
   .field
     = f.label "Készítő:"
-    = f.select(:translater_id,  Translater.all.collect {|u| [u.name, u.id]}, :prompt => 'Válassz')
+    = f.select(:translater_id,  Translater.all.collect {|u| [u.translater_name, u.id]}, :prompt => 'Válassz')
     = link_to new_translater_path() do
       .btn.btn-success
         i.bi.bi-plus-square.pr-1
         | Új
   .field
     = f.label "Fordító program:"
-    = f.select(:program_id, Program.all.collect {|u| [u.name, u.id]}, :prompt => 'Válassz')
+    = f.select(:program_id, Program.all.collect {|u| [u.program_name, u.id]}, :prompt => 'Válassz')
     = link_to new_program_path do
       .btn.btn-success.ml-2
         i.bi.bi-plus-square.pr-1
@@ -39,7 +39,7 @@
 
   .field
     = f.label "Platform:"
-    = f.select(:platform_id, Platform.all.collect {|u| [u.name, u.id]}, :prompt => 'Válassz')
+    = f.select(:platform_id, Platform.all.collect {|u| [u.platform_name, u.id]}, :prompt => 'Válassz')
     = link_to  new_platform_path do
       .btn.btn-success.ml-2
         i.bi.bi-plus-square.pr-1
@@ -55,3 +55,6 @@
     = f.file_field :game_files, class: 'form-control col-5'
   
   .actions = f.submit
+
+
+  

@@ -65,6 +65,6 @@ class TranslatersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def translater_params
-      params.require(:translater).permit(:name)
+      params.require(:translater).permit(:translater_name)
     end
 end

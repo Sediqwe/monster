@@ -1,10 +1,6 @@
 p#notice = notice
 
 p
-  strong Name:
-  = @upload.name
-
-p
   strong Version:
   = @upload.version
 
@@ -13,7 +9,7 @@ p
   = @upload.description
 p
   strong Készítő:
-  = Translater.find(@upload.translater_id).name
+  = @upload.translater.translater_name
   
 p
   strong Game:

@@ -3,7 +3,7 @@ class PlatformsController < ApplicationController
 
   # GET /platforms or /platforms.json
   def index
-    @platforms = platform.all
+    @platforms = Platform.all
   end
 
   # GET /platforms/1 or /platforms/1.json
@@ -65,6 +65,6 @@ class PlatformsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def platform_params
-      params.require(:platform).permit(:name)
+      params.require(:platform).permit(:translater_name)
     end
 end

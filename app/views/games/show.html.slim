@@ -1,54 +1,74 @@
 p#notice = notice
-
-h1.text-dark
-  = @game.name
-
-
-- if @game.link_steam.present?
-  p
-    strong Steam link:
-    = @game.link_steam
-- if @game.link_epic.present?
-  p
-    strong Epic link:
-    = @game.link_epic
-- if @game.link_other.present?
-  p
-    strong Egyéb link:
-    = @game.link_other
-
-- if @game.description.present?
-  p
-    strong Leírás:
-    = @game.description
-p = link_to "Fájl feltöltés", new_upload_path(id: @game.id) , class: "btn btn-success"
-
-p 
-  strong A rendszerben lévő feltöltések ehhez a játékhoz: 
-  table class="table table-bordered table-success col-4"
-    thead
-      tr
-        th scope="col" Verzió
-        th scope="col" Fordító
-        th scope="col" Letöltve
-        th scope="col" Letöltés
-    
-    tbody
-      -@game.uploads.each do |t|
-        tr
+.container-lg
+  .row
+    .col-10
+      #testimonial-slider.owl-carousel
+        .testimonial
           
-          td
-            = t.version 
-          td
-            = t.translater if t.translater.present?
-          td 
-            |Letöltve: 
-            = Download.where(upload_id: t.id).size 
-            |X
-          td
-            =link_to "Letöltés", rails_blob_path(t.game_files, disposition: :attachment) , id: "letoltes_gomb", datagame: "#{@game.id}", done: "#{t.game_files.id}" ,class: "btn btn-success  text-light"
+            
+          h3.title = @game.name
+          = image_tag @game.image.variant(resize_to_limit: [300, 300]).processed if @game.image.present?
+          
+          p.description
+            - if @game.description.present?
+              = @game.description
 
-- if current_user.present? & current_user.admin?
-  => link_to 'Edit', edit_game_path(@game), class: "btn btn-success text-light"
-'|
-=< link_to 'Back', games_path, class: "btn btn-success  text-light"
+          - if @game.link_steam.present?
+            p
+              strong Steam link:
+              = @game.link_steam
+          - if @game.link_epic.present?
+            p
+              strong Epic link:
+              = @game.link_epic
+          - if @game.link_other.present?
+            p
+              strong Egyéb link:
+              = @game.link_other
+
+          
+       
+          
+          p 
+            strong A rendszerben lévő feltöltések ehhez a játékhoz: 
+            table class="table table-bordered table-success col-12 kicsitable shadow"
+              thead
+                tr
+                  th scope="col-2" #DB ID
+                  th scope="col-2" Verzió
+                  th scope="col-2" Fordító
+                  th scope="col-2" Platform
+                  th scope="col-2" Program
+                  th scope="col-2" Letöltve
+                  th scope="col-2" Letöltés
+              
+              tbody
+                -@game.uploads.each do |t|
+                  tr
+                    td 
+                      |##{t.id}
+                    td = t.version 
+                    td = t.translater.translater_name
+                    td = t.platform.platform_name
+                    td = t.program.program_name
+                    td 
+                      |Letöltve: 
+                      = Download.where(upload_id: t.id).size 
+                      |X
+                    
+                    
+                    
+                    td
+                      =link_to "Letöltés", rails_blob_path(t.game_files, disposition: :attachment) , id: "letoltes_gomb", datagame: "#{@game.id}", done: "#{t.id}" ,class: "btn btn-success  text-light"
+
+            - if current_user.present? & current_user.admin?
+              => link_to 'Edit', edit_game_path(@game), class: "btn btn-success text-light"
+            '|
+            =< link_to 'Back', games_path, class: "btn btn-success  text-light mr-1"
+
+            '| 
+            = link_to "Fájl feltöltés", new_upload_path(id: @game.id) , class: "btn btn-success text-light"
+
+
+
+                
