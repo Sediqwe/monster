@@ -12,7 +12,7 @@ class PlatformsController < ApplicationController
 
   # GET /platforms/new
   def new
-    @platform = platform.new
+    @platform = Platform.new
   end
 
   # GET /platforms/1/edit
@@ -21,7 +21,7 @@ class PlatformsController < ApplicationController
 
   # POST /platforms or /platforms.json
   def create
-    @platform = platform.new(platform_params)
+    @platform = Platform.new(platform_params)
 
     respond_to do |format|
       if @platform.save
