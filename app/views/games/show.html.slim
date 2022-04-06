@@ -76,7 +76,7 @@ p#notice = notice
             - if current_user.present? 
               -if current_user.admin?
                 '| 
-                  = link_to "Fájl feltöltés", new_upload_path(id: @game.id) , class: "btn btn-success text-light"
+                = link_to "Fájl feltöltés", new_upload_path(id: @game.id) , class: "btn btn-success text-light"
 
 
 
