@@ -25,7 +25,10 @@ p#notice = notice
             p
               strong Egyéb link:
               = @game.link_other
-
+          - if @game.link_hun.present?
+            p
+              strong Link hun:
+              = @game.link_hun
           
        
           

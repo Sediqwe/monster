@@ -84,7 +84,7 @@ class GamesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def game_params
-      params.require(:game).permit(:name, :link_steam, :link_epic, :link_other, :description, :image)
+      params.require(:game).permit(:name, :link_steam, :link_epic, :link_other, :description, :image, :link_hun)
     end
 
     def je_params

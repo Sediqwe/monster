@@ -1,6 +1,6 @@
 = form_for @game do |f|
   - if @game.errors.any?
-    #error_explanation
+    #error_explanation.bg-dark
       h2 = "#{pluralize(@game.errors.count, 'error')} prohibited this game from being saved:"
       ul
         - @game.errors.full_messages.each do |message|
@@ -18,6 +18,9 @@
   .field
     = f.label "Egyéb link:"
     = f.text_field :link_other
+  .field
+    = f.label "Link_hun:"
+    = f.text_field :link_hun
   .field
     = f.label "Rövid leírás"
     = f.text_area :description
