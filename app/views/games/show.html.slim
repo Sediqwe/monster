@@ -39,6 +39,7 @@ p#notice = notice
                   th scope="col-2" Fordító
                   th scope="col-2" Platform
                   th scope="col-2" Program
+                  th scope="col-2" Mérete
                   th scope="col-2" Letöltve
                   th scope="col-2" Letöltés
               
@@ -51,13 +52,11 @@ p#notice = notice
                     td = t.translater.translater_name
                     td = t.platform.platform_name
                     td = t.program.program_name
+                    td = number_to_human_size(t.game_files.byte_size)
                     td 
                       |Letöltve: 
                       = Download.where(upload_id: t.id).size 
-                      |X
-                    
-                    
-                    
+                      |X                    
                     td
                       =link_to "Letöltés", rails_blob_path(t.game_files, disposition: :attachment) , id: "letoltes_gomb", datagame: "#{@game.id}", done: "#{t.id}" ,class: "btn btn-success  text-light"
 

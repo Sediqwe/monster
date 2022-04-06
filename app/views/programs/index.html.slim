@@ -1,5 +1,4 @@
-h1 Listing uploads
-
+h1 Listing programs
 table
   thead
     tr
@@ -10,7 +9,7 @@ table
   tbody
     - @programs.each do |program|
       tr
-        td = program.name
+        td = program.program_name
         
         td = link_to 'Show', program
         td = link_to 'Edit', edit_program_path(program)

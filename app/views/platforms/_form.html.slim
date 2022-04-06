@@ -1,6 +1,6 @@
 = form_for @platform do |f|
   - if @platform.errors.any?
-    #error_explanation
+    #error_explanation.bg-secondary
       h2 = "#{pluralize(@platform.errors.count, 'error')} prohibited this upload from being saved:"
       ul
         - @platform.errors.full_messages.each do |message|
