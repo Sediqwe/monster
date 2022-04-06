@@ -60,7 +60,7 @@ class PlatformsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_platform
-      @platform = platform.find(params[:id])
+      @platform = Platform.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
