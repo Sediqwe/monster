@@ -1,6 +1,6 @@
 class GamesController < ApplicationController
   before_action :set_game, only: %i[ show edit update destroy ]
-  before_action :authorized?, only: %i[edit update destroy]
+  #before_action :authorized?, only: %i[edit update destroy]
   # GET /games or /games.json
   def index
     @q = Game.ransack(params[:q])
