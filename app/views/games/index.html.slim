@@ -1,5 +1,7 @@
 h1.text-dark Fordítások:
-= link_to 'Új játék', new_game_path, class: "btn btn-success" if current_user.present?
+- if current_user.present? 
+  -if current_user.admin?
+    = link_to 'Új játék', new_game_path, class: "btn btn-success" if current_user.present?
 br
 br
 

@@ -43,6 +43,7 @@ p#notice = notice
                   th scope="col-2" Platform
                   th scope="col-2" Program
                   th scope="col-2" Mérete
+                  th scope="col-2" Megjegyzés
                   th scope="col-2" Letöltve
                   th scope="col-2" Letöltés
               
@@ -57,6 +58,10 @@ p#notice = notice
                     td = t.program.program_name
                     td = number_to_human_size(t.game_files.byte_size)
                     td 
+                      span data-bs-toggle="tooltip" title="#{t.description}" style="cursor: progress;"
+                        = truncate(t.description, :length => 37, :separator => ' ')
+
+                    td 
                       |Letöltve: 
                       = Download.where(upload_id: t.id).size 
                       |X                    
@@ -68,9 +73,10 @@ p#notice = notice
                 => link_to 'Edit', edit_game_path(@game), class: "btn btn-success text-light"
             '|
             =< link_to 'Back', games_path, class: "btn btn-success  text-light mr-1"
-
-            '| 
-            = link_to "Fájl feltöltés", new_upload_path(id: @game.id) , class: "btn btn-success text-light"
+            - if current_user.present? 
+              -if current_user.admin?
+                '| 
+                  = link_to "Fájl feltöltés", new_upload_path(id: @game.id) , class: "btn btn-success text-light"
 
 
 

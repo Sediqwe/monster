@@ -14,7 +14,9 @@ table
         
         td = link_to 'Show', platform
         td = link_to 'Edit', edit_platform_path(platform)
-        td = link_to 'Destroy', platform, data: { confirm: 'Are you sure?' }, method: :delete
+        - if current_user.present? 
+          -if current_user.admin?
+            td = link_to 'Destroy', platform, data: { confirm: 'Are you sure?' }, method: :delete
 
 br
 
