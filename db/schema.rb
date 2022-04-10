@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_02_193533) do
+ActiveRecord::Schema.define(version: 2022_04_09_084248) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "action_text_rich_texts", force: :cascade do |t|
+    t.string "name", null: false
+    t.text "body"
+    t.string "record_type", null: false
+    t.bigint "record_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["record_type", "record_id", "name"], name: "index_action_text_rich_texts_uniqueness", unique: true
+  end
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -48,6 +58,14 @@ ActiveRecord::Schema.define(version: 2022_04_02_193533) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "blogs", force: :cascade do |t|
+    t.string "title"
+    t.text "desc"
+    t.integer "blog_type"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "downloads", force: :cascade do |t|
     t.bigint "game_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -68,12 +86,6 @@ ActiveRecord::Schema.define(version: 2022_04_02_193533) do
     t.index ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true
     t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
     t.index ["sluggable_type", "sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_type_and_sluggable_id"
-  end
-
-  create_table "gameplatforms", force: :cascade do |t|
-    t.text "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "games", force: :cascade do |t|
@@ -99,14 +111,30 @@ ActiveRecord::Schema.define(version: 2022_04_02_193533) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "news", force: :cascade do |t|
+    t.string "title"
+    t.text "desc"
+    t.boolean "active"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_news_on_user_id"
+  end
+
+  create_table "platforms", id: :bigint, default: -> { "nextval('gameplatforms_id_seq'::regclass)" }, force: :cascade do |t|
+    t.text "platform_name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "programs", force: :cascade do |t|
-    t.text "name"
+    t.text "program_name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "translaters", force: :cascade do |t|
-    t.text "name"
+    t.text "translater_name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -119,10 +147,13 @@ ActiveRecord::Schema.define(version: 2022_04_02_193533) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id"
-    t.string "translater"
-    t.text "platform"
-    t.text "program"
+    t.bigint "translater_id", null: false
+    t.bigint "program_id", null: false
+    t.bigint "platform_id", null: false
     t.index ["game_id"], name: "index_uploads_on_game_id"
+    t.index ["platform_id"], name: "index_uploads_on_platform_id"
+    t.index ["program_id"], name: "index_uploads_on_program_id"
+    t.index ["translater_id"], name: "index_uploads_on_translater_id"
     t.index ["user_id"], name: "index_uploads_on_user_id"
   end
 
@@ -136,6 +167,7 @@ ActiveRecord::Schema.define(version: 2022_04_02_193533) do
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "uploader"
     t.string "slug"
+    t.text "alias"
     t.index ["slug"], name: "index_users_on_slug", unique: true
   end
 
@@ -143,6 +175,10 @@ ActiveRecord::Schema.define(version: 2022_04_02_193533) do
   add_foreign_key "downloads", "games"
   add_foreign_key "downloads", "uploads"
   add_foreign_key "games", "users"
+  add_foreign_key "news", "users"
   add_foreign_key "uploads", "games"
+  add_foreign_key "uploads", "platforms"
+  add_foreign_key "uploads", "programs"
+  add_foreign_key "uploads", "translaters"
   add_foreign_key "uploads", "users"
 end

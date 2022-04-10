@@ -11,6 +11,8 @@ require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
 require("packs/custom")
+require("trix")
+require("@rails/actiontext")
 //= require jquery.turbolinks
 import 'bootstrap-icons/font/bootstrap-icons.css'
 // Uncomment to copy all static images under ../images to the output folder and reference

@@ -30,9 +30,17 @@
       </li>
       <% end %>
       <li class="nav-item <%= (url_for(only_path: true)) == "/games" ? "active" : "" %> ">
+
       
         <%= link_to "Fordítások", games_path , class: "nav-link" %>
       </li>
+
+      <li class="nav-item <%= (url_for(only_path: true)) == "/blogs" ? "active" : "" %> ">
+
+      
+        <%= link_to "Információk", blogs_path , class: "nav-link" %>
+      </li>
+
       
        <li class="nav-item">
         <a class="nav-link" href="#">Forum</a>
