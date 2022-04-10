@@ -6,7 +6,7 @@ table.table-successtext-dark.border
       th Game
       th Version
       th Description
-      th
+      th Time
       th
       
 
@@ -16,6 +16,7 @@ table.table-successtext-dark.border
         td = upload.game.name
         td = upload.version
         td = upload.description
+        td = upload.created_at
         td = link_to 'Show', upload
         td = link_to 'Edit', edit_upload_path(upload)
         - if current_user.present? 

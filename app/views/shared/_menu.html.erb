@@ -8,13 +8,14 @@
     <ul class="navbar-nav mr-auto">
       <li class="nav-item <%= (url_for(only_path: true)) == "/" ? "active" : "" %> ">
       
-      <%= link_to "Főoldal ", root_path() , class: "nav-link" %>  
+      <%= link_to " Főoldal ", root_path() , class: "nav-link fas fa-home " %>  
+      
       </li>
       <% if current_user.present? %>
       <li class="nav-item <%= (url_for(only_path: true)) == "/" ? "active" : "" %> ">
        <li class="nav-item <%= (url_for(only_path: true)) == "/uploads" ? "active" : "" %> ">
       
-        <%= link_to "Feltöltés", uploads_path , class: "nav-link" %>
+        <%= link_to " Feltöltés", uploads_path , class: "nav-link fas fa-upload " %>
       </li>
       
         
@@ -22,39 +23,40 @@
       <% else %>
 
       <li class="nav-item <%= (url_for(only_path: true)) == "/sessions/new" ? "active" : "" %> " >
-      <%= link_to "Belépés", login_signin_path() , class: "nav-link" %>
+      <%= link_to " Belépés", login_signin_path() , class: "nav-link fas fa-sign-in-alt " %>
         
       </li>
       <li class="nav-item <%= (url_for(only_path: true)) == "/login/reg" ? "active" : "" %> ">
-        <%= link_to "Regisztráció", login_reg_path() , class: "nav-link" %>
+        <%= link_to " Regisztráció", login_reg_path() , class: "nav-link fas fa-plus " %>
       </li>
       <% end %>
       <li class="nav-item <%= (url_for(only_path: true)) == "/games" ? "active" : "" %> ">
 
       
-        <%= link_to "Fordítások", games_path , class: "nav-link" %>
+        <%= link_to " Fordítások", games_path , class: "nav-link fas fa-language " %>
       </li>
 
       <li class="nav-item <%= (url_for(only_path: true)) == "/blogs" ? "active" : "" %> ">
 
       
-        <%= link_to "Információk", blogs_path , class: "nav-link" %>
+        <%= link_to " Hogyan ?", blogs_path , class: "nav-link fa fa-drafting-compass " %>
       </li>
 
       
        <li class="nav-item">
-        <a class="nav-link" href="#">Forum</a>
+       <%= link_to " Fórum", blogs_path , class: "nav-link fas fa-align-left " %>
+        
         
       </li>
       <% if current_user.present? %>
-      <%= link_to "Kilépés", login_signout_path() , class: "nav-link text-light" %>
+      <%= link_to "Kilépés", login_signout_path() , class: "nav-link text-light fas fa-sign-out-alt" %>
       <% else %>
       <% end %>
     </ul>
     <% if current_user.present? %>
     <div class=" text-light my-2 my-lg-0"">
     <%=link_to user_settings_path do %>
-      <i class="bi bi-gear fa-3x text-light"></i>
+      <i class="fas fa-cog fa-3x text-light"></i>
     
       <% end %>
       <% end %>

@@ -1,0 +1,21 @@
+p id="notice"  = notice
+
+- if current_user.present?
+  - if current_user.admin?
+    = link_to 'Új hír!', new_news_path , class: "btn btn-success text-light"
+
+.container.bootstrap.snippets.bootdeys
+  .col-md-9
+    .timeline-centered.timeline-sm
+      - @news.each_with_index do |news, index| 
+        article class="timeline-entry #{ "left-aligned" if index.to_i.even?}"
+          .timeline-entry-inner
+            time.timeline-time datetime="2014-01-10T03:45" 
+              span 12:45
+              span =index
+            .timeline-icon.bg-violet
+              i.fas.fa-desktop
+            .timeline-label
+              h4.timeline-title Project fejléc
+              p = news
+        

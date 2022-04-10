@@ -3,7 +3,7 @@ class NewsController < ApplicationController
 
   # GET /news or /news.json
   def index
-    @news = News.all
+    @news = Game.group('DATE(created_at)').count
   end
 
   # GET /news/1 or /news/1.json
