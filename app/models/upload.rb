@@ -5,4 +5,7 @@ class Upload < ApplicationRecord
   belongs_to :translater
   belongs_to :program
   belongs_to :platform
+  def self.default_timezone
+    :utc
+  end
   end
