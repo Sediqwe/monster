@@ -23,6 +23,7 @@ class UploadsController < ApplicationController
   def create
     @upload = Upload.new(upload_params)
     @upload.user_id = current_user.id
+    @upload.datum = Date.today()
     respond_to do |format|
       if @upload.save
         record_activity("Sikeres feltöltés: #{ Game.find(@upload.game_id).name} Version: #{@upload.version}")
