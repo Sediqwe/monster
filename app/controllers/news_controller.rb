@@ -4,6 +4,7 @@ class NewsController < ApplicationController
   # GET /news or /news.json
   def index
     @uploads= Upload.select(:datum).order('datum desc').group(:datum)
+    
   end
 
   # GET /news/1 or /news/1.json
@@ -57,8 +58,13 @@ class NewsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  def random_color
+    color = ["red","blue","green", "yellow","warning", "primary" , "orange"]
+    num = rand(0..6)
+    p color[num]
 
-  private
+  end
+    private
     # Use callbacks to share common setup or constraints between actions.
     def set_news
       @news = News.find(params[:id])

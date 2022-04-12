@@ -4,6 +4,7 @@ p id="notice"  = notice
   - if current_user.admin?
     = link_to 'Új hír!', new_news_path , class: "btn btn-success text-light"
 
+
 .container.bootstrap.snippets.bootdeys
   .col-md-9
     .timeline-centered.timeline-sm
@@ -12,18 +13,19 @@ p id="notice"  = notice
           .timeline-entry-inner
             time.timeline-time datetime="2014-01-10T03:45" 
               span 
-              span 
-                
-            .timeline-icon.bg-violet
-              i.fas.fa-desktop
-            .timeline-label
-              h4.timeline-title =upload.datum
-              p.text-dark
+              span =upload.datum
+            div class="timeline-icon bg-#{ bumm =random_color}"
+              i class="fas fa-#{random_icon}"              
+            div class="timeline-label bg-#{ bumm}"
+              h4.timeline-title.text-dark Új feltöltések
+              p.text-light
                 -Upload.where("datum like ?", upload.datum).each do |d|
-                  =d.game.name 
-                  |(v.:
-                  = d.version 
-                  |)
-                  br
+                  li
+                    =d.game.name 
+                    |(v.:
+                    = d.version 
+                    |)
+                    br
+                 
                 
         
