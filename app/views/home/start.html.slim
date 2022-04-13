@@ -1,7 +1,10 @@
 h1 Kezdőoldal
 - if current_user.present?
     h3 Be vagy lépve: 
-    h3 = current_user.name.capitalize()
+    - if current_user.alias.present?
+        h3 = current_user.name.capitalize()
+    - else
+        h3 = current_user.alias.capitalize()
     h2 = current_user.admin?
 
 

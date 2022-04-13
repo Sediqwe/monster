@@ -58,12 +58,7 @@ class NewsController < ApplicationController
       format.json { head :no_content }
     end
   end
-  def random_color
-    color = ["red","blue","green", "yellow","warning", "primary" , "orange"]
-    num = rand(0..6)
-    p color[num]
-
-  end
+ 
     private
     # Use callbacks to share common setup or constraints between actions.
     def set_news

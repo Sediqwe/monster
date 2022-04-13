@@ -1,0 +1,26 @@
+
+= form_for @user do |f|
+  - if @user.errors.any?
+    #error_explanation.bg-secondary
+      h2 = "#{pluralize(@user.errors.count, 'error')} prohibited this upload from being saved:"
+      ul
+        - @user.errors.full_messages.each do |message|
+          li = message
+
+ 
+    
+  .field
+    = f.label "Felhasználó:"
+    = f.text_field :name , readonly: true
+  .field
+    = f.label "Alias:"
+    = f.text_field :alias
+  .field
+    = f.label "Email:"
+    = f.text_field :email
+  .field
+    = f.label "jelszó:"
+    = f.text_field :password
+ 
+  
+  .actions = f.submit "Beküld", class:"btn btn-success"
