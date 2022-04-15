@@ -1,5 +1,7 @@
-h1 Editing upload
+-if current_user.id == @user.id
+    h1 Editing upload
 
-== render 'form'
 
-|save
+    == render 'form'
+- else
+    |Ehez semmi jogod!    

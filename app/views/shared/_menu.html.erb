@@ -55,7 +55,7 @@
     </ul>
     <% if current_user.present? %>
     <div class=" text-light my-2 my-lg-0"">
-    <%=link_to users_path do %>
+    <%=link_to edit_user_path(current_user) do %>
       <i class="fas fa-cog fa-3x text-light"></i>
     
       <% end %>

@@ -37,19 +37,20 @@ p#notice = notice
             table class="table table-bordered table-success col-12 kicsitable shadow"
               thead
                 tr
-                  th scope="col-2" #DB ID
-                  th scope="col-2" Verzió
-                  th scope="col-2" Fordító
-                  th scope="col-2" Platform
-                  th scope="col-2" Program
-                  th scope="col-2" Mérete
-                  th scope="col-2" Megjegyzés
-                  th scope="col-2" Letöltve
-                  th scope="col-2" Letöltés
+                  th scope="col-1" #DB ID
+                  th scope="col-1" Verzió
+                  th scope="col-1" Fordító
+                  th scope="col-1" Platform
+                  th scope="col-1" Program
+                  th scope="col-1" Mérete
+                  th scope="col-1" Megjegyzés
+                  th scope="col-1" Letöltve
+                  th scope="col-1" Letöltés
+                  th scope="col-1" Megjelölés
               
               tbody
                 -@game.uploads.each do |t|
-                  tr
+                  tr class="#{ " bg-danger" if t.bad == true }"
                     td 
                       |##{t.id}
                     td = t.version 
@@ -67,12 +68,18 @@ p#notice = notice
                       |X                    
                     td
                       =link_to "Letöltés", rails_blob_path(t.game_files, disposition: :attachment) , id: "letoltes_gomb", datagame: "#{@game.id}", done: "#{t.id}" ,class: "btn btn-success  text-light"
+                    td
+                      - if t.bad == false
+                        =link_to "Hibás", upload_bad_path(type: "nok",id: t.id, game: @game.id), method: :post, class: "btn btn-danger  text-light" 
+                      - else
+                        =link_to "Jó", upload_bad_path(type: "ok", id: t.id, game: @game.id), method: :post, class: "btn btn-danger  text-light"
+                      
 
             - if current_user.present? 
               -if current_user.admin?
-                => link_to 'Edit', edit_game_path(@game), class: "btn btn-success text-light"
+                => link_to 'Adatlap módosítása', edit_game_path(@game), class: "btn btn-success text-light"
             '|
-            =< link_to 'Back', games_path, class: "btn btn-success  text-light mr-1"
+            =< link_to 'Vissza', games_path, class: "btn btn-success  text-light mr-1"
             - if current_user.present? 
               -if current_user.admin?
                 '| 

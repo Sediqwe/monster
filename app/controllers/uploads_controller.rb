@@ -18,7 +18,19 @@ class UploadsController < ApplicationController
   # GET /uploads/1/edit
   def edit
   end
-
+  def bad
+    @up = Upload.find(params[:id])
+    if params[:type] == "ok"
+      @up.bad = false
+    else
+      @up.bad = true
+    end
+    @up.save()
+    redirect_to game_path(params[:game])
+    
+    
+  end
+  
   # POST /uploads or /uploads.json
   def create
     @upload = Upload.new(upload_params)

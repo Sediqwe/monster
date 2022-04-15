@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 
   # GET /users or /users.json
   def index
-    @user = User.find(current_user.id)
+    
   end
 
   # GET /users/1 or /users/1.json
@@ -26,11 +26,11 @@ class UsersController < ApplicationController
     @users.active = true
     respond_to do |format|
       if @users.save
-        format.html { redirect_to users_url(@users), notice: "users was successfully created." }
-        format.json { render :show, status: :created, location: @users }
+        format.html { redirect_to users_url(@users), notice: "A felhasználó létrehozva." }
+        
       else
         format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @users.errors, status: :unprocessable_entity }
+        
       end
     end
   end
@@ -38,12 +38,12 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1 or /users/1.json
   def update
     respond_to do |format|
-      if @users.update(users_params)
-        format.html { redirect_to users_url(@users), notice: "users was successfully updated." }
-        format.json { render :show, status: :ok, location: @users }
+      if @user.update(users_params)
+        format.html { redirect_to edit_user_path(@user), notice: "A felhasználói adatok módosítva" }
+        
       else
         format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @users.errors, status: :unprocessable_entity }
+        
       end
     end
   end
@@ -54,14 +54,14 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to users_index_url, notice: "users was successfully destroyed." }
-      format.json { head :no_content }
+      
     end
   end
  
     private
     # Use callbacks to share common setup or constraints between actions.
     def set_users
-      @users = User.find(current_user.id)
+      @user = User.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
