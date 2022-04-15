@@ -5,7 +5,7 @@ class GamesController < ApplicationController
   def index
     @q = Game.ransack(params[:q])
     
-    @games = @q.result(distinct: true).order('created_at ASC')
+    @games = @q.result(distinct: true).order('created_at DESC')
   end
 
   # GET /games/1 or /games/1.json

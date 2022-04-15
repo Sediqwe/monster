@@ -23,7 +23,7 @@ class UploadsController < ApplicationController
     if params[:type] == "ok"
       @up.bad = false
     else
-      @up.bad = true
+      @up.bad = true  
     end
     @up.save()
     redirect_to game_path(params[:game])
