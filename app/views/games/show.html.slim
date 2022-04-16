@@ -16,22 +16,40 @@ p#notice = notice
           - if @game.link_steam.present?
             p
               strong Steam link:
-              = @game.link_steam
+              = link_to "STEAM", @game.link_steam , class: "btn btn-success text-light"
           - if @game.link_epic.present?
             p
               strong Epic link:
-              = @game.link_epic
+              = link_to "EPIC", @game.link_epic , class: "btn btn-success text-light"
           - if @game.link_other.present?
             p
               strong Egyéb link:
-              = @game.link_other
+              = link_to "Egyéb link", @game.link_other , class: "btn btn-success text-light"
           - if @game.link_hun.present?
             p
-              strong Link hun:
-              = @game.link_hun
+              strong 
+              = link_to "Magyaritasok.hu", @game.link_hun , class: "btn btn-success text-light"
           
-       
-          
+          -if @game.done == true
+            br
+            br
+            br
+            br
+            h1.bg-success A játékhoz elérhető NEM gépi fordítás is, kérlek látogass el ide:
+            h1.bg-warning = link_to "Magyaritasok.hu", @game.link_hun , class: "bg-success"
+            br
+            br
+            br
+            br
+            br
+            br
+            br
+            br
+            br
+            br
+            br
+            br
+            br
           p 
             strong A rendszerben lévő feltöltések ehhez a játékhoz: 
             table class="table table-bordered table-success col-12 kicsitable shadow"
@@ -46,7 +64,9 @@ p#notice = notice
                   th scope="col-1" Megjegyzés
                   th scope="col-1" Letöltve
                   th scope="col-1" Letöltés
-                  th scope="col-1" Megjelölés
+                  - if current_user.present?
+                    -if current_user.admin?
+                      th scope="col-1" Megjelölés
               
               tbody
                 -@game.uploads.each do |t|
@@ -68,12 +88,14 @@ p#notice = notice
                       |X                    
                     td
                       =link_to "Letöltés", rails_blob_path(t.game_files, disposition: :attachment) , id: "letoltes_gomb", datagame: "#{@game.id}", done: "#{t.id}" ,class: "btn btn-success  text-light"
-                    td
-                      - if t.bad == false
-                        =link_to "Hibás", upload_bad_path(type: "nok",id: t.id, game: @game.id), method: :post, class: "btn btn-danger  text-light" 
-                      - else
-                        =link_to "Jó", upload_bad_path(type: "ok", id: t.id, game: @game.id), method: :post, class: "btn btn-danger  text-light"
-                      
+                    - if current_user.present?
+                        -if current_user.admin?
+                          td
+                            - if t.bad == false
+                              =link_to "Hibás", upload_bad_path(type: "nok",id: t.id, game: @game.id), method: :post, class: "btn btn-danger  text-light" 
+                            - else
+                              =link_to "Jó", upload_bad_path(type: "ok", id: t.id, game: @game.id), method: :post, class: "btn btn-danger  text-light"
+                        
 
             - if current_user.present? 
               -if current_user.admin?

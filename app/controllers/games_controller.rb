@@ -7,7 +7,17 @@ class GamesController < ApplicationController
     
     @games = @q.result(distinct: true).order('created_at DESC')
   end
+  def magyhu
+    @game = Game.find(params[:id])
+    if params[:type] == "van"
+      @game.done = true
+        
+    else
+    @game.done=false  
 
+    end
+    @game.save
+  end
   # GET /games/1 or /games/1.json
   def show
     @user = Game.friendly.find(params[:id])

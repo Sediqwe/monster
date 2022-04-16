@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :users
   post 'download', to: "games#download"
   post 'upload_bad', to: "uploads#bad"
+  post 'games_magyhu', to: "games#magyhu"
   resources :uploads
   resources :games
   get 'sessions/new'
@@ -19,3 +20,4 @@ post 'login/create'
 post 'sessions/create'
 get 'login/create', to: 'login#reg'
 end
+
