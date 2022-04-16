@@ -13,10 +13,10 @@
       </li>
       <% if current_user.present? %>
       <li class="nav-item <%= (url_for(only_path: true)) == "/" ? "active" : "" %> ">
-       <li class="nav-item <%= (url_for(only_path: true)) == "/uploads" ? "active" : "" %> ">
+       <!--<li class="nav-item <%= (url_for(only_path: true)) == "/uploads" ? "active" : "" %> "> 
       
         <%= link_to " Feltöltés", uploads_path , class: "nav-link fas fa-upload " %>
-      </li>
+      </li>!-->
       
         
       </li>
@@ -36,18 +36,18 @@
         <%= link_to " Fordítások", games_path , class: "nav-link fas fa-language " %>
       </li>
 
-      <li class="nav-item <%= (url_for(only_path: true)) == "/blogs" ? "active" : "" %> ">
+       <!--<li class="nav-item <%= (url_for(only_path: true)) == "/blogs" ? "active" : "" %> ">
 
       
         <%= link_to " Hogyan ?", blogs_path , class: "nav-link fa fa-drafting-compass " %>
       </li>
 
       
-       <li class="nav-item">
-       <%= link_to " Fórum", blogs_path , class: "nav-link fas fa-align-left " %>
+      <li class="nav-item">
+       <%= link_to " Fórum", blogs_path , class: "nav-link fas fa-align-left " %> 
         
         
-      </li>
+      </li>-->
       <% if current_user.present? %>
       <%= link_to "Kilépés", login_signout_path() , class: "nav-link text-light fas fa-sign-out-alt" %>
       <% else %>

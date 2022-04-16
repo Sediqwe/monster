@@ -1,6 +1,6 @@
 class UploadsController < ApplicationController
   before_action :set_upload, only: %i[ show edit update destroy ]
-  #before_action :authorized?
+  before_action :authorized?
   # GET /uploads or /uploads.json
   def index
     @uploads = Upload.all
@@ -36,6 +36,7 @@ class UploadsController < ApplicationController
     @upload = Upload.new(upload_params)
     @upload.user_id = current_user.id
     @upload.datum = Date.today()
+    @upload.bad = false
     respond_to do |format|
       if @upload.save
         record_activity("Sikeres feltöltés: #{ Game.find(@upload.game_id).name} Version: #{@upload.version}")
