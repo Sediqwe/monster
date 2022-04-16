@@ -5,7 +5,7 @@ class GamesController < ApplicationController
   def index
     @q = Game.ransack(params[:q])
     
-    @games = @q.result(distinct: true).order('created_at DESC')
+    @games = @q.result(distinct: true).order('created_at DESC').page(params[:page]).per(8)
   end
   def magyhu
     @game = Game.find(params[:id])

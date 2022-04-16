@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 gem 'csv'
 gem 'image_processing'
-gem 'will_paginate', '~> 3.1.0'
+gem 'kaminari'
 ruby '2.7.2'
 gem 'active_storage_validations'
 gem 'friendly_id', '~> 5.4.0'
