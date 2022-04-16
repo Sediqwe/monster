@@ -27,7 +27,7 @@ p id="notice"  = notice
               p.text-light
                 -Upload.where("datum like ?", upload.datum).each do |d|
                   li
-                    = link_to d.game.name, game_path(d.game.id), class: "btn btn-link text-light"
+                    = link_to d.game.name, game_path(d.game.slug), class: "btn btn-link text-light"
                     |(v.:
                     = d.version 
                     |)
