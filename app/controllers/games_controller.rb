@@ -4,19 +4,16 @@ class GamesController < ApplicationController
   # GET /games or /games.json
   def index
     @q = Game.ransack(params[:q])
-    
     @games = @q.result(distinct: true).order('created_at DESC').page(params[:page]).per(10)
   end
   def magyhu
     @game = Game.find(params[:id])
     if params[:type] == "van"
       @game.done = true
-        
     else
-    @game.done=false  
-
+     @game.done=false  
     end
-    @game.save
+      @game.save
   end
   # GET /games/1 or /games/1.json
   def show

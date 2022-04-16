@@ -28,7 +28,7 @@
             -if game.done != true
               = link_to "Van Magyaritasok.hu kész", games_magyhu_path(id: game.id, type: "van"), method: :post, class: "btn btn-success"
             -else
-              = link_to "Nincs Magyaritasok.hu kész", games_magyhu_path(id: game.id, type: "nincs"), method: :post, class: "btn btn-success"
+              = link_to "Nincs Magyaritasok.hu kész", games_magyhu_path(id: game.id, type: "nincs"), method: :post, class: "btn btn-danger"
             
 
             

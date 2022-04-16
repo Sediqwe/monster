@@ -1,7 +1,7 @@
 p#notice = notice
-.container-lg
+.container-xl
   .row
-    .col-10
+    .col-12
       #testimonial-slider.owl-carousel
         .testimonial
           
@@ -15,20 +15,20 @@ p#notice = notice
 
           - if @game.link_steam.present?
             p
-              strong Steam link:
-              = link_to "STEAM", @game.link_steam , class: "btn btn-success text-light"
+              strong
+              = link_to "STEAM", @game.link_steam, target: "_blank" , class: "btn btn-success text-light"
           - if @game.link_epic.present?
             p
-              strong Epic link:
-              = link_to "EPIC", @game.link_epic , class: "btn btn-success text-light"
+              strong
+              = link_to "EPIC", @game.link_epic , target: "_blank", class: "btn btn-success text-light"
           - if @game.link_other.present?
             p
-              strong Egyéb link:
-              = link_to "Egyéb link", @game.link_other , class: "btn btn-success text-light"
+              strong
+              = link_to "Egyéb link", @game.link_other , target: "_blank", class: "btn btn-success text-light"
           - if @game.link_hun.present?
             p
               strong 
-              = link_to "Magyaritasok.hu", @game.link_hun , class: "btn btn-success text-light"
+              = link_to "Magyaritasok.hu", @game.link_hun, target: "_blank" , class: "btn btn-success text-light"
           
           -if @game.done == true
             br
@@ -52,50 +52,60 @@ p#notice = notice
             br
           p 
             strong A rendszerben lévő feltöltések ehhez a játékhoz: 
-            table class="table table-bordered table-success col-12 kicsitable shadow"
-              thead
-                tr
-                  th scope="col-1" #DB ID
-                  th scope="col-1" Verzió
-                  th scope="col-1" Fordító
-                  th scope="col-1" Platform
-                  th scope="col-1" Program
-                  th scope="col-1" Mérete
-                  th scope="col-1" Megjegyzés
-                  th scope="col-1" Letöltve
-                  th scope="col-1" Letöltés
-                  - if current_user.present?
-                    -if current_user.admin?
-                      th scope="col-1" Megjelölés
+            .bg-info.shadow.rounded.text-light
+              h3
+                |Elfogadom azt, hogy ezek a fordítások GÉPPEL készültek.A fordítás tartalmaz félre fordításokat, angolul maradt szövegelemeket és csak a készítő által megjelölt verzióra használható!
+              p
+                a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample"
+                  |Elfogadom
+                
+                .collapse id="collapseExample"
               
-              tbody
-                -@game.uploads.each do |t|
-                  tr class="#{ " bg-danger" if t.bad == true }"
-                    td 
-                      |##{t.id}
-                    td = t.version 
-                    td = t.translater.translater_name
-                    td = t.platform.platform_name
-                    td = t.program.program_name
-                    td = number_to_human_size(t.game_files.byte_size)
-                    td 
-                      span data-bs-toggle="tooltip" title="#{t.description}" style="cursor: progress;"
-                        = truncate(t.description, :length => 37, :separator => ' ')
+    
+                  table class="table table-bordered table-success col-12 kicsitable shadow hidden"
+                    thead
+                      tr
+                        th scope="col-1" #DB ID
+                        th scope="col-1" Verzió
+                        th scope="col-1" Fordító
+                        th scope="col-1" Platform
+                        th scope="col-1" Program
+                        th scope="col-1" Mérete
+                        th scope="col-1" Megjegyzés
+                        th scope="col-1" Letöltve
+                        th scope="col-3" Letöltés
+                        - if current_user.present?
+                          -if current_user.admin?
+                            th scope="col-1" Megjelölés
+                    
+                    tbody
+                      -@game.uploads.each do |t|
+                        tr class="#{ " bg-danger" if t.bad == true }"
+                          td 
+                            |##{t.id}
+                          td = t.version 
+                          td = t.translater.translater_name
+                          td = t.platform.platform_name
+                          td = t.program.program_name
+                          td = number_to_human_size(t.game_files.byte_size)
+                          td 
+                            span data-bs-toggle="tooltip" title="#{t.description}" style="cursor: progress;"
+                              = truncate(t.description, :length => 37, :separator => ' ')
 
-                    td 
-                      |Letöltve: 
-                      = Download.where(upload_id: t.id).size 
-                      |X                    
-                    td
-                      =link_to "Letöltés", rails_blob_path(t.game_files, disposition: :attachment) , id: "letoltes_gomb", datagame: "#{@game.id}", done: "#{t.id}" ,class: "btn btn-success  text-light"
-                    - if current_user.present?
-                        -if current_user.admin?
+                          td 
+                            |Letöltve: 
+                            = Download.where(upload_id: t.id).size 
+                            |X                    
                           td
-                            - if t.bad == false
-                              =link_to "Hibás", upload_bad_path(type: "nok",id: t.id, game: @game.id), method: :post, class: "btn btn-danger  text-light" 
-                            - else
-                              =link_to "Jó", upload_bad_path(type: "ok", id: t.id, game: @game.id), method: :post, class: "btn btn-danger  text-light"
-                        
+                            =link_to "Letöltés", rails_blob_path(t.game_files, disposition: :attachment) , id: "letoltes_gomb", datagame: "#{@game.id}", done: "#{t.id}" ,class: "btn btn-success  text-light"
+                          - if current_user.present?
+                              -if current_user.admin?
+                                td
+                                  - if t.bad == false
+                                    =link_to "Hibás", upload_bad_path(type: "nok",id: t.id, game: @game.id), method: :post, class: "btn btn-danger  text-light" 
+                                  - else
+                                    =link_to "Jó", upload_bad_path(type: "ok", id: t.id, game: @game.id), method: :post, class: "btn btn-danger  text-light"
+                              
 
             - if current_user.present? 
               -if current_user.admin?
