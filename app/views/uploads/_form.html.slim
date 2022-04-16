@@ -17,11 +17,13 @@
         H1 = Game.find(params[:id]).name 
         |ID:
         =f.hidden_field :game_id, value: params[:id]
-      
-
   .field
     = f.label :version
     = f.text_field :version, class: 'form-control col-1'
+
+  .field
+    = f.label "Mega nz_link"
+    = f.text_field :link_mega, class: 'form-control col-1'
   .field
     = f.label "Készítő:"
     = f.select(:translater_id,  Translater.all.collect {|u| [u.translater_name, u.id]}, :prompt => 'Válassz')
@@ -49,10 +51,10 @@
     
   .field
     = f.label :description
-    = f.text_area :description, class: 'form-control col-5'
+    = f.text_area :description, class: 'form-control col-3'
   .field
     = f.label :game_file
-    = f.file_field :game_files, class: 'form-control col-5'
+    = f.file_field :game_files, class: 'form-control col-2'
   
   .actions = f.submit
 

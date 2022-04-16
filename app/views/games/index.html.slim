@@ -1,6 +1,6 @@
 - if current_user.present? 
   -if current_user.admin?
-    = link_to 'Új játék', new_game_path, class: "btn btn-success text-light" if current_user.present?
+    = link_to 'Új játék', new_game_path, class: "btn btn-success text-light mb-3 ml-3" if current_user.present?
     br
 
 = search_form_for @q, class: "row pl-3" do |f|
@@ -11,7 +11,7 @@
 = paginate @games
 
 - @games.each do |game|
-  .card
+  .card.bg-warning.shadow-lg
     .card-img style="background-image: url(#{ rails_blob_path(game.image)  if game.image.attached?});" 
       .overlay
         .overlay-content
@@ -29,7 +29,7 @@
               = link_to "Van Magyaritasok.hu kész", games_magyhu_path(id: game.id, type: "van"), method: :post, class: "btn btn-success"
             -else
               = link_to "Nincs Magyaritasok.hu kész", games_magyhu_path(id: game.id, type: "nincs"), method: :post, class: "btn btn-danger"
-            
+          
 
             
       

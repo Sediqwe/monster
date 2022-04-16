@@ -15,7 +15,7 @@ p id="notice"  = notice
   .col-md-9
     .timeline-centered.timeline-sm
       - @uploads.each_with_index do |upload, index| 
-        article class="timeline-entry #{ "left-aligned" if index.to_i.even?}"
+        article class="timeline-entry  #{ "left-aligned" if index.to_i.even?}"
           .timeline-entry-inner
             time.timeline-time datetime="2014-01-10T03:45" 
               span 
@@ -27,7 +27,7 @@ p id="notice"  = notice
               p.text-light
                 -Upload.where("datum like ?", upload.datum).each do |d|
                   li
-                    =d.game.name 
+                    = link_to d.game.name, game_path(d.game.id), class: "btn btn-link text-light"
                     |(v.:
                     = d.version 
                     |)
