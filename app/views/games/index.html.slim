@@ -146,7 +146,8 @@
                     = link_to "Nincs Magyaritasok.hu kész", games_magyhu_path(id: game.id, type: "nincs"), method: :post, class: "btn btn-danger"
           /! Gomb $
           .cards_btn
-            button.btn.btn-primary Megnézem »
+            = link_to 'Megnézem »', game,  class: "btn btn-primary"
+            
 
 
 
