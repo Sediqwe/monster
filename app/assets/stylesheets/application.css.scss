@@ -228,7 +228,10 @@ button {
 	    -ms-flex-pack: center;
 	        justify-content: center;
 }
-
+.listpage-imgs {   
+	height: 260px;   
+	width: 100%;   
+	object-fit: cover; }
 .datasheet__headline {
 	margin-top: 20px;
 	color: white;

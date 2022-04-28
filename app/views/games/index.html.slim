@@ -130,8 +130,9 @@
             .cards__label-holder
               .cards__label.cards__label--blue PC
             /! A kép tartója, hogy mindig egységes legyen
-            .cards__image-holder
-              img.img-fluid alt="" src="#{ rails_blob_path(game.image)  if game.image.attached?}" /
+            .cards__image-holder 
+
+              img.listpage-imgs alt="" src="#{ rails_blob_path(game.image)  if game.image.attached?}" /
             /! Headline
             .cards__headline
               h4 =game.name
