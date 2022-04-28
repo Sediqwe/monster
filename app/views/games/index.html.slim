@@ -124,30 +124,30 @@
     - @games.each do |game|
       .col-xl-2.col-md-3.col-sm-4.col-xs-12
         /! egy kártya designja az a tagre azért van szükség, hogy ne csak a gombra müködjön a kattintás, hanem az egész kártya kattintható legyen
-        a href="" 
-        .cards
-          /! tapaszok a képre, hogy milyen platformra van, bármennyit lehet ebből létrehozni
-          .cards__label-holder
-            .cards__label.cards__label--blue PC
-          /! A kép tartója, hogy mindig egységes legyen
-          .cards__image-holder
-            img.img-fluid alt="" src="#{ rails_blob_path(game.image)  if game.image.attached?}" /
-          /! Headline
-          .cards__headline
-            h4 =game.name
-            h5 Feltöltött fájlok:
-              #{game.uploads.size}
-            - if current_user.present?
-              - if current_user.admin?
-                p
-                  -if game.done != true
-                    = link_to "Van Magyaritasok.hu kész", games_magyhu_path(id: game.id, type: "van"), method: :post, class: "btn btn-success"
-                  -else
-                    = link_to "Nincs Magyaritasok.hu kész", games_magyhu_path(id: game.id, type: "nincs"), method: :post, class: "btn btn-danger"
-          /! Gomb $
-          .cards_btn
-            = link_to 'Megnézem »', game,  class: "btn btn-primary"
-            
+        a href="/games/#{game.slug}" 
+          .cards
+            /! tapaszok a képre, hogy milyen platformra van, bármennyit lehet ebből létrehozni
+            .cards__label-holder
+              .cards__label.cards__label--blue PC
+            /! A kép tartója, hogy mindig egységes legyen
+            .cards__image-holder
+              img.img-fluid alt="" src="#{ rails_blob_path(game.image)  if game.image.attached?}" /
+            /! Headline
+            .cards__headline
+              h4 =game.name
+              h5 Feltöltött fájlok:
+                #{game.uploads.size}
+              - if current_user.present?
+                - if current_user.admin?
+                  p
+                    -if game.done != true
+                      = link_to "Van Magyaritasok.hu kész", games_magyhu_path(id: game.id, type: "van"), method: :post, class: "btn btn-success"
+                    -else
+                      = link_to "Nincs Magyaritasok.hu kész", games_magyhu_path(id: game.id, type: "nincs"), method: :post, class: "btn btn-danger"
+            /! Gomb $
+            .cards_btn
+              = link_to 'Megnézem »', game,  class: "btn btn-primary mb-2"
+              
 
 
 
