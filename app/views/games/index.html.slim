@@ -10,25 +10,148 @@
     = f.submit "Keresés",class: "btn btn-success"
 = paginate @games
 
-- @games.each do |game|
-  .card.bg-warning.shadow-lg
-    .card-img style="background-image: url(#{ rails_blob_path(game.image)  if game.image.attached?});" 
-      .overlay
-        .overlay-content
-          = link_to 'Megnéz', game,  class: "btn btn-success btn-block hover"
-    .card-content
-      a href="#!" 
-      h2 = game.name
-      h2 
-        |Feltöltött fájlok:
-        =game.uploads.size
-      - if current_user.present?
-        - if current_user.admin?
-          p
-            -if game.done != true
-              = link_to "Van Magyaritasok.hu kész", games_magyhu_path(id: game.id, type: "van"), method: :post, class: "btn btn-success"
-            -else
-              = link_to "Nincs Magyaritasok.hu kész", games_magyhu_path(id: game.id, type: "nincs"), method: :post, class: "btn btn-danger"
+
+
+.container-fluid
+  /! A row-ra azért van szükség, mert ez töri be a colokat a megfelelő méretekben.
+  .row
+    .col-sm-6.mx-auto
+      /! Kereső felépítése
+      .search
+        .input-group.mb-3
+          input.form-control aria-describedby="basic-addon2" aria-label=("Recipient's username") placeholder=("Keresés a játékok között") type="text" /
+          .input-group-append
+            button.btn.btn-primary type="button"  Keresés
+/! A container-fluid fixen add képernyőtől függően egy kis eltartást
+.container-fluid
+  /! A row-ra azért van szükség, mert ez töri be a colokat a megfelelő méretekben.
+  .row
+    .col-sm-6.col-xs-12.mx-auto
+      /! platform checkbox felépítése
+      .platform-change
+        /! Minden form-check form-check-inline egy külön input, ha kell még ilyen akkor sokszorosítod átírod az értéket és az id, valamint a for-t
+        .form-check.form-check-inline
+          input#pcPlatform.form-check-input type="checkbox" value="pc" /
+          label.form-check-label for="pcPlatform"  PC
+        .form-check.form-check-inline
+          input#psPlatform.form-check-input type="checkbox" value="ps" /
+          label.form-check-label for="psPlatform"  PS
+        .form-check.form-check-inline
+          input#xboxPlatform.form-check-input type="checkbox" value="xbox" /
+          label.form-check-label for="xboxPlatform"  XBOX
+/! A container-fluid fixen add képernyőtől függően egy kis eltartást
+.container-fluid
+  /! A row-ra azért van szükség, mert ez töri be a colokat a megfelelő méretekben.
+  .row
+    .col-sm-12.mx-auto
+      /! ABC felépítése
+      .abc
+        ul
+          /!
+            | Az active class-t be kell kötni rails-be, hogy csak akkor kapja meg, ha az adott elem ki van jelölve, ha nem sikerül nem gond, le kell venni
+            | az active classt az li elemről és nincs baj
+          li.active
+            a href=""  a
+          li
+            a href=""  b
+          li
+            a href=""  c
+          li
+            a href=""  d
+          li
+            a href=""  e
+          li
+            a href=""  f
+          li
+            a href=""  g
+          li
+            a href=""  h
+          li
+            a href=""  i
+          li
+            a href=""  j
+          li
+            a href=""  k
+          li
+            a href=""  l
+          li
+            a href=""  m
+          li
+            a href=""  n
+          li
+            a href=""  o
+          li
+            a href=""  p
+          li
+            a href=""  q
+          li
+            a href=""  r
+          li
+            a href=""  s
+          li
+            a href=""  t
+          li
+            a href=""  u
+          li
+            a href=""  v
+          li
+            a href=""  w
+          li
+            a href=""  x
+          li
+            a href=""  y
+          li
+            a href=""  z
+/! A container-fluid fixen add képernyőtől függően egy kis eltartást
+.container-fluid
+  /! A row-ra azért van szükség, mert ez töri be a colokat a megfelelő méretekben.
+  .row
+    /!
+      | a különböző col méretek jelölik a méreteket, hogy teljes mértékben reszponzív legyen minden olyan ami
+      | col az egy elem azaz új kártya esetén már nem kell row csak ki kell copyzni innentől
+
+
+
+
+
+
+
+
+
+
+.container-fluid
+  .row
+    - @games.each do |game|
+      .col-xl-2.col-md-3.col-sm-4.col-xs-12
+        /! egy kártya designja az a tagre azért van szükség, hogy ne csak a gombra müködjön a kattintás, hanem az egész kártya kattintható legyen
+        a href="" 
+        .cards
+          /! tapaszok a képre, hogy milyen platformra van, bármennyit lehet ebből létrehozni
+          .cards__label-holder
+            .cards__label.cards__label--blue PC
+          /! A kép tartója, hogy mindig egységes legyen
+          .cards__image-holder
+            img.img-fluid alt="" src="#{ rails_blob_path(game.image)  if game.image.attached?}" /
+          /! Headline
+          .cards__headline
+            h4 =game.name
+            h5 Feltöltött fájlok:
+              #{game.uploads.size}
+            - if current_user.present?
+              - if current_user.admin?
+                p
+                  -if game.done != true
+                    = link_to "Van Magyaritasok.hu kész", games_magyhu_path(id: game.id, type: "van"), method: :post, class: "btn btn-success"
+                  -else
+                    = link_to "Nincs Magyaritasok.hu kész", games_magyhu_path(id: game.id, type: "nincs"), method: :post, class: "btn btn-danger"
+          /! Gomb $
+          .cards_btn
+            button.btn.btn-primary Megnézem »
+
+
+
+
+          
           
 
             
