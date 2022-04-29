@@ -22,8 +22,7 @@
 * CUSTOM UTIL CLASSES
 * ==========================================
 *
-*/
-body {
+*/body {
 	background-color: #3D3D3D !important;
 }
 
@@ -116,13 +115,19 @@ button {
 	    -ms-flex-direction: column;
 	        flex-direction: column;
 	color: white;
-	-webkit-box-pack: center;
-	    -ms-flex-pack: center;
-	        justify-content: center;
 	-webkit-box-align: center;
 	    -ms-flex-align: center;
 	        align-items: center;
 	margin-top: 25px;
+	width: 100%;
+	text-underline: none;
+}
+.cards h6 {
+	-webkit-box-flex: 1;
+	    -ms-flex: 1 1 auto;
+	        flex: 1 1 auto;
+	padding: 10px;
+	text-align: center;
 }
 .cards__label-holder {
 	z-index: 999;
@@ -160,12 +165,22 @@ button {
 	margin: 15px 10px;
 	text-align: center;
 }
+.cards .listpage-imgs {
+	height: 260px;
+	width: 100%;
+	-o-object-fit: cover;
+	   object-fit: cover;
+	border-top-right-radius: 10px;
+	border-top-left-radius: 10px;
+}
 
 .cards:hover {
 	background-color: white;
 	color: black;
 	-webkit-transition: 0.4s ease-in-out;
 	transition: 0.4s ease-in-out;
+	text-underline: none;
+	text-decoration: none;
 }
 .cards:hover .cards__label {
 	color: white;
@@ -228,10 +243,7 @@ button {
 	    -ms-flex-pack: center;
 	        justify-content: center;
 }
-.listpage-imgs {   
-	height: 260px;   
-	width: 100%;   
-	object-fit: cover; }
+
 .datasheet__headline {
 	margin-top: 20px;
 	color: white;
