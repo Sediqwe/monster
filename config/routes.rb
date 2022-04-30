@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   get 'login/signin', to: 'sessions#new'
   get 'login/signout'
   get 'login/reg'
-root 'news#index'
+root 'games#index'
 post 'login/create'
 post 'sessions/create'
 get 'login/create', to: 'login#reg'
