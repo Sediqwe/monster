@@ -1,6 +1,6 @@
 class GamesController < ApplicationController
   before_action :set_game, only: %i[ show edit update destroy ]
-  #before_action :authorized?, only: %i[edit update destroy]
+  before_action :authorized?, only: %i[new edit update destroy]
   
   def index
     @q = Game.ransack(params[:q])
@@ -65,6 +65,7 @@ class GamesController < ApplicationController
 
   
   def update
+    
     respond_to do |format|
       record_activity("Játék módosítva - Előtte: #{@game.name}")
       if @game.update(game_params)

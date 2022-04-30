@@ -1,6 +1,6 @@
 h1 Játék adatlapjnak módosítása
-
-== render 'form'
+- if current_user.admin?
+    == render 'form'
 
 => link_to 'Show', @game, class: "btn btn-success  text-light"
 '|

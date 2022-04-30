@@ -1,5 +1,5 @@
 h1 Új játék adatlap:
-
-== render 'form'
+- if current_user.admin?
+    == render 'form'
 
 = link_to '<< Vissza', games_path, class: "btn btn-success text-light"

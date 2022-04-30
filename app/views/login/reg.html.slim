@@ -3,50 +3,26 @@
         li = message
   
 
+.container-fluid
+  .form-blocks
+    h2 Regisztráció
+    = form_for @user,:html => {:class => 'form-signin', autocomplete: "disabled" } , url: login_create_url  do |f|     
+        .form-group
+        = f.text_field :name,  class: "form-control", placeholder: "Felhasználó", autocomplete: 'disabled'
+        
+        .form-group
+        = f.text_field :email,  class: "form-control", placeholder: "E-mail cím", autocomplete: 'disabled'
+        
+        .form-group
+        = f.password_field :password,  class: "form-control", placeholder: "Jelszó", autocomplete: 'disabled'
+        
+        .form-group
+        = f.password_field :password_confirmation,  class: "form-control ", placeholder: "Jelszó mégegyszer", autocomplete: 'disabled'
+        button.btn.btn-primary.btn-block Regisztráció »
+        p.or vagy
+        = link_to "Belépés »", login_signin_path, class: "btn btn-primary btn-block text-light "
 
 
-
-.form-bg
-    .container
-        .row
-            .col-lg-4.col-lg-offset-4.col-md-6.col-md-offset-3
-                .form-container
-                    .form-icon
-                        i.fa.fa-user.fa-5x
-                    h4.title Regisztráció
-                    
-                    = form_for @user,:html => {:class => 'form-signin', autocomplete: "off" } , url: login_create_url  do |f|     
-                        .form-group
-                            span.input-icon
-                                i.fa.fa-user
-                                    = f.text_field :name,  class: "form-control", placeholder: "Felhasználó", autocomplete: 'off'
-                        .form-group
-                            span.input-icon
-                                i.fa.fa-at
-                                    = f.text_field :email,  class: "form-control", placeholder: "E-mail cím", autocomplete: 'off'
-                        .form-group
-                            span.input-icon
-                                i.fa.fa-lock
-                                    = f.password_field :password,  class: "form-control", placeholder: "Jelszó", autocomplete: 'off'
-                        .form-group
-                            span.input-icon
-                                i.fa.fa-lock
-                                    = f.password_field :password_confirmation,  class: "form-control", placeholder: "Jelszó mégegyszer", autocomplete: 'off'
-                            
-                            span.forgot
-                        button.btn.btn-success.col.mb-5 type="submit"
-                                i.fas.fa-angle-double-right
-                                    |Regisztráció
-                        span.mb-3
-                            |Ha már van felhasználód:
-                        span
-                            .btn.btn-success.col
-                                i.fa.fa-arrow-right
-                                     = link_to "Belépés", login_signin_path, class: " text-light "
-
-
-
-    
   
 
 

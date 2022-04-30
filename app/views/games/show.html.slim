@@ -23,13 +23,14 @@
             = link_to " Egyéb »", @game.link_other, target: "_blank" , class: "btn btn-secondary text-light"
           - if @game.link_hun.present?
             = link_to " Magyaritasok.hu", @game.link_hun, target: "_blank" , class: "btn btn-secondary text-light"
-    .row
-        .col-sm-12.col-md-8.col-xs-12.mx-auto
-          .personal-message
-            .alert.alert-danger
-              h5
-                | A játékhoz elérhető kézzel készült fordítás is, kérlek látogass el ide:
-                =link_to "Magyaritasok.hu »", @game.link_hun , class: "btn btn-primary text-light"
+    - if @game.done?
+      .row
+          .col-sm-12.col-md-8.col-xs-12.mx-auto
+            .personal-message
+              .alert.alert-danger
+                h5
+                  | A játékhoz elérhető kézzel készült fordítás is, kérlek látogass el ide:
+                  =link_to "Magyaritasok.hu »", @game.link_hun , class: "btn btn-primary text-light"
     /! üzenetek oké tölthető ide még be kell majd másolni a mostani táblázatot
     .datasheet__message
       .row

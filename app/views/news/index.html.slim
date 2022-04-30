@@ -5,9 +5,10 @@ p id="notice"  = notice
         h3 = current_user.alias.capitalize()
     - else
         h3 = current_user.name.capitalize()
-    h2 = current_user.admin?
+    
 - if current_user.present?
   - if current_user.admin?
+    h2 = current_user.admin?
     = link_to 'Új hír!', new_news_path , class: "btn btn-success text-light"
 
 
