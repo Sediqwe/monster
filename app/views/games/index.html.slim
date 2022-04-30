@@ -33,11 +33,11 @@
                     span class="position-absolute translate-middle badge bg-danger"
                       = number_game(letter)
             -else
-              li.btn
+              li class=" position-relative mx-1 px-2 btn"
                 a href="games?q%5Bname_start%5D=#{letter}"
                   =letter
                   - if number_game(letter) >0
-                    span class="badge rounded-pill badge-notification bg-warning"
+                    span class="badge rounded-pill badge-notification bg-danger"
                       =number_game(letter)
                 
                 
