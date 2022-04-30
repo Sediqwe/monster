@@ -6,9 +6,9 @@
 .container-fluid
   .form-blocks
     h2 Regisztráció
-    = form_for @user,:html => {:class => 'form-signin', autocomplete: "disabled" } , url: login_create_url  do |f|     
+    = form_for @user,:html => {:class => 'form-signin', autocomplete: "off" } , url: login_create_url  do |f|     
         .form-group
-        = f.text_field :name,  class: "form-control", placeholder: "Felhasználó", autocomplete: 'disabled'
+        = f.text_field :name,  class: "form-control", placeholder: "Felhasználó", autocomplete: 'false'
         
         .form-group
         = f.text_field :email,  class: "form-control", placeholder: "E-mail cím", autocomplete: 'disabled'
