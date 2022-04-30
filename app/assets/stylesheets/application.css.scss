@@ -25,7 +25,9 @@
 */body {
 	background-color: #3D3D3D !important;
 }
-
+a:hover {
+	background-color: #118eb1;
+  }
 .form-blocks {
 	background: rgba(0, 0, 0, 0.4);
 	border-radius: 10px;
@@ -224,7 +226,10 @@ button {
 }
 .abc ul li a {
 	color: white;
+	
 }
+	
+
 .abc ul .active {
 	background-color: #008FA2;
 	border-radius: 7px;

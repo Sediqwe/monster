@@ -22,24 +22,27 @@
     
       .abc
         ul
-          li
-            =link_to "Összes", games_path
+          =link_to  games_path do |t|
+            div class="position-relative mx-1 px-2 btn text-light mt-1 #{ "active" if params[:q].nil?}"
+              |Összes
+              span class="position-absolute translate-middle badge bg-danger"
+                =number_game("")
           -("A".."Z").each do |letter|
             -if params[:q].present?
-              li class=" position-relative mx-1 px-2 btn #{"active" if letter. == params[:q][:name_start]}"
                 a href="games?q%5Bname_start%5D=#{letter}"
+                  li class=" position-relative mx-1 px-2 btn #{"active" if letter. == params[:q][:name_start]}"
+                    =letter
+                    - if number_game(letter) >0
+                      span class="position-absolute translate-middle badge bg-danger"
+                        = number_game(letter)
+            -else
+              a href="games?q%5Bname_start%5D=#{letter}"
+                li class=" position-relative mx-1 px-2 btn"
                   =letter
                   - if number_game(letter) >0
                     span class="position-absolute translate-middle badge bg-danger"
-                      = number_game(letter)
-            -else
-              li class=" position-relative mx-1 px-2 btn"
-                a href="games?q%5Bname_start%5D=#{letter}"
-                  =letter
-                  - if number_game(letter) >0
-                    span class="badge rounded-pill badge-notification bg-danger"
                       =number_game(letter)
-                
+              
                 
                 
       .abc 
