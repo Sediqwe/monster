@@ -2,43 +2,20 @@
   -if current_user.admin?
     = link_to 'Új játék', new_game_path, class: "btn btn-success text-light mb-3 ml-3" if current_user.present?
     br
-
-= search_form_for @q, class: "row pl-3" do |f|
-  .col-2.col-sm-6
-    = f.search_field :name_cont, placeholder: "Keresés..." ,class: "form-control"
-  .col-3.col-sm-4
-    = f.submit "Keresés",class: "btn btn-success"
-= paginate @games
-
-
-
 .container-fluid
   /! A row-ra azért van szükség, mert ez töri be a colokat a megfelelő méretekben.
   .row
     .col-sm-6.mx-auto
       /! Kereső felépítése
-      .search
-        .input-group.mb-3
-          input.form-control aria-describedby="basic-addon2" aria-label=("Recipient's username") placeholder=("Keresés a játékok között") type="text" /
-          .input-group-append
-            button.btn.btn-primary type="button"  Keresés
+      = search_form_for @q, class: "row pl-3" do |f|
+        .search
+          .input-group.mb-3
+            = f.text_field :name_cont, placeholder: "Keresés a játékok között", aria_label: "Recipient's username", aria_describedby: "basic-addon2",class: "form-control"
+            .input-group-append
+            = f.submit "Keresés",class: "btn btn-primary"
+            
 /! A container-fluid fixen add képernyőtől függően egy kis eltartást
-.container-fluid
-  /! A row-ra azért van szükség, mert ez töri be a colokat a megfelelő méretekben.
-  .row
-    .col-sm-6.col-xs-12.mx-auto
-      /! platform checkbox felépítése
-      .platform-change
-        /! Minden form-check form-check-inline egy külön input, ha kell még ilyen akkor sokszorosítod átírod az értéket és az id, valamint a for-t
-        .form-check.form-check-inline
-          input#pcPlatform.form-check-input type="checkbox" value="pc" /
-          label.form-check-label for="pcPlatform"  PC
-        .form-check.form-check-inline
-          input#psPlatform.form-check-input type="checkbox" value="ps" /
-          label.form-check-label for="psPlatform"  PS
-        .form-check.form-check-inline
-          input#xboxPlatform.form-check-input type="checkbox" value="xbox" /
-          label.form-check-label for="xboxPlatform"  XBOX
+
 /! A container-fluid fixen add képernyőtől függően egy kis eltartást
 .container-fluid
   /! A row-ra azért van szükség, mert ez töri be a colokat a megfelelő méretekben.
@@ -50,58 +27,16 @@
           /!
             | Az active class-t be kell kötni rails-be, hogy csak akkor kapja meg, ha az adott elem ki van jelölve, ha nem sikerül nem gond, le kell venni
             | az active classt az li elemről és nincs baj
-          li.active
-            a href=""  a
-          li
-            a href=""  b
-          li
-            a href=""  c
-          li
-            a href=""  d
-          li
-            a href=""  e
-          li
-            a href=""  f
-          li
-            a href=""  g
-          li
-            a href=""  h
-          li
-            a href=""  i
-          li
-            a href=""  j
-          li
-            a href=""  k
-          li
-            a href=""  l
-          li
-            a href=""  m
-          li
-            a href=""  n
-          li
-            a href=""  o
-          li
-            a href=""  p
-          li
-            a href=""  q
-          li
-            a href=""  r
-          li
-            a href=""  s
-          li
-            a href=""  t
-          li
-            a href=""  u
-          li
-            a href=""  v
-          li
-            a href=""  w
-          li
-            a href=""  x
-          li
-            a href=""  y
-          li
-            a href=""  z
+          -("A".."Z").each do |letter|
+            li
+              a href="games?q%5Bname_start%5D=#{letter}"
+                =letter
+                
+            
+          = sort_link(@q, :name, "Név szerint", class: "btn btn-primary text-light mr-2") 
+
+          = sort_link(@q, :created_at, "Dátum szerint", class: "btn btn-primary text-light mr-2") 
+         
 .container-fluid
   .row
     - @games.each do |game|
