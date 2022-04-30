@@ -9,7 +9,7 @@
     .datasheet__image
       - if @game.image.present?
         = image_tag @game.image.variant(resize_to_limit: [500, 500]).processed, class: "img-fluid"
-      img.img-fluid alt="" src="imgs/500x500.jpeg" /
+      
     /! ezek az átírányító gombok
     .row
       .col-sm-12.col-md-8.col-xs-12.mx-auto
@@ -45,8 +45,6 @@
     .row 
       .col-sm-12.col-md-8.col-xs-12.mx-auto
         .collapse id="collapseExample"
-                
-      
           table class="table table-bordered table-primary text-dark col-12 kicsitable shadow hidden"
             thead
               tr
