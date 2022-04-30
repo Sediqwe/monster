@@ -4,6 +4,7 @@ class GamesController < ApplicationController
   
   def index
     @q = Game.ransack(params[:q])
+    
     if params[:page_n].present?
       number = params[:page_n]
       session[:page_n] = number
@@ -12,7 +13,9 @@ class GamesController < ApplicationController
       end
       
     else
-      session[:page_n] = "10"
+      if session[:page_n].nil?
+        session[:page_n] = "10"
+      end
     end
     @games = @q.result(distinct: true).order('created_at DESC').page(params[:page]).per(session[:page_n])
     
