@@ -98,6 +98,6 @@ class GamesController < ApplicationController
     end
 
     def je_params
-      params.require(:product).permit(:id, :done)
+      params.require(:product).permit(:id, :done )
     end
 end

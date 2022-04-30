@@ -7,12 +7,12 @@
   .row
     .col-sm-6.mx-auto
       /! Kereső felépítése
-      = search_form_for @q, class: "row pl-3" do |f|
+      = search_form_for @q, class: " pl-3" do |f|
         .search
           .input-group.mb-3
-            = f.text_field :name_cont, placeholder: "Keresés a játékok között", aria_label: "Recipient's username", aria_describedby: "basic-addon2",class: "form-control"
+            = f.text_field :name_cont, placeholder: "Keresés a játékok között...", aria_label: "Recipient's username", aria_describedby: "basic-addon2",class: "form-control"
             .input-group-append
-            = f.submit "Keresés",class: "btn btn-primary"
+            = f.submit "Keresés",class: "btn btn-primary ml-2"
             
 /! A container-fluid fixen add képernyőtől függően egy kis eltartást
 
@@ -27,10 +27,18 @@
           /!
             | Az active class-t be kell kötni rails-be, hogy csak akkor kapja meg, ha az adott elem ki van jelölve, ha nem sikerül nem gond, le kell venni
             | az active classt az li elemről és nincs baj
+          li
+            =link_to "Összes", games_path
           -("A".."Z").each do |letter|
-            li
-              a href="games?q%5Bname_start%5D=#{letter}"
-                =letter
+            -if params[:q].present?
+              li class="#{"active" if letter. == params[:q][:name_start]}"
+                a href="games?q%5Bname_start%5D=#{letter}"
+                  =letter
+            -else
+              li 
+                a href="games?q%5Bname_start%5D=#{letter}"
+                  =letter
+                
                 
             
           = sort_link(@q, :name, "Név szerint", class: "btn btn-primary text-light mr-2") 
