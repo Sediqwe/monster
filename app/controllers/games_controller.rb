@@ -3,8 +3,18 @@ class GamesController < ApplicationController
   #before_action :authorized?, only: %i[edit update destroy]
   
   def index
-    @q = Game.ransack(params[:q])   
-    @games = @q.result(distinct: true).order('created_at DESC').page(params[:page]).per(10)
+    @q = Game.ransack(params[:q])
+    if params[:page_n].present?
+      number = params[:page_n]
+      session[:page_n] = number
+      if number>"30"
+        session[:page_n] = "30"
+      end
+      
+    else
+      session[:page_n] = "10"
+    end
+    @games = @q.result(distinct: true).order('created_at DESC').page(params[:page]).per(session[:page_n])
     
   end
 
