@@ -4,15 +4,15 @@
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+  <div class="collapse navbar-collapse " id="navbarsExampleDefault">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item <%= (url_for(only_path: true)) == "/" ? "active" : "" %> ">
+      <li class="nav-item <%= (url_for(only_path: true)) == "/" ? "bg-primary" : "" %> ">
       
-      <%= link_to " Főoldal ", root_path() , class: "nav-link fas fa-home " %>  
+      <%= link_to " Főoldal ", root_path() , class: "nav-link text-light fas fa-home " %>  
       
       </li>
       <% if current_user.present? %>
-      <li class="nav-item <%= (url_for(only_path: true)) == "/" ? "active" : "" %> ">
+      <li class="nav-item <%= (url_for(only_path: true)) == "/" ? "bg-primary" : "" %> ">
        <!--<li class="nav-item <%= (url_for(only_path: true)) == "/uploads" ? "active" : "" %> "> 
       
         <%= link_to " Feltöltés", uploads_path , class: "nav-link fas fa-upload " %>
@@ -23,17 +23,17 @@
       <% else %>
 
       <li class="nav-item <%= (url_for(only_path: true)) == "/sessions/new" ? "active" : "" %> " >
-      <%= link_to " Belépés", login_signin_path() , class: "nav-link fas fa-sign-in-alt " %>
+      <%= link_to " Belépés", login_signin_path() , class: "nav-link text-light fas fa-sign-in-alt " %>
         
       </li>
       <li class="nav-item <%= (url_for(only_path: true)) == "/login/reg" ? "active" : "" %> ">
-        <%= link_to " Regisztráció", login_reg_path() , class: "nav-link fas fa-plus " %>
+        <%= link_to " Regisztráció", login_reg_path() , class: "nav-link text-light fas fa-plus " %>
       </li>
       <% end %>
       <li class="nav-item <%= (url_for(only_path: true)) == "/games" ? "active" : "" %> ">
 
       
-        <%= link_to " Fordítások", games_path , class: "nav-link fas fa-language " %>
+        <%= link_to " Fordítások", games_path , class: "nav-link text-light fas fa-language " %>
       </li>
 
        <!--<li class="nav-item <%= (url_for(only_path: true)) == "/blogs" ? "active" : "" %> ">
