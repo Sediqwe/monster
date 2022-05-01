@@ -1,5 +1,3 @@
-h1 Új fájl feltöltése:
-.container.shadow
+-if current_user.admin?
     == render 'form'
-
-    = link_to 'Back', uploads_path
+= link_to 'Back', uploads_path , class: "btn btn-primary text-light"

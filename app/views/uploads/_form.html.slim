@@ -1,62 +1,61 @@
 = form_for @upload do |f|
   - if @upload.errors.any?
-    #error_explanation
+    #error_explanation.bg-dark
       h2 = "#{pluralize(@upload.errors.count, 'error')} prohibited this upload from being saved:"
       ul
         - @upload.errors.full_messages.each do |message|
           li = message
 
-  .field
-    - if params[:id].nil?
-      = f.label "Válassz játékot"
-      = f.select(:game_id, Game.all.collect {|u| [u.name, u.id]}, html: {class: 'form-control col-1'}, :prompt => 'Válassz')
-    - else
-      -if url_for(only_path: true).include?('edit')
-      
-      - else
-        H1 = Game.find(params[:id]).name 
-        |ID:
-        =f.hidden_field :game_id, value: params[:id]
-  .field
-    = f.label :version
-    = f.text_field :version, class: 'form-control col-1'
 
-  .field
-    = f.label "Mega nz_link"
-    = f.text_field :link_mega, class: 'form-control col-1'
-  .field
-    = f.label "Készítő:"
-    = f.select(:translater_id,  Translater.all.collect {|u| [u.translater_name, u.id]}, :prompt => 'Válassz')
-    = link_to new_translater_path() do
-      .btn.btn-success
-        i.bi.bi-plus-square.pr-1
-        | Új
-  .field
-    = f.label "Fordító program:"
-    = f.select(:program_id, Program.all.collect {|u| [u.program_name, u.id]}, :prompt => 'Válassz')
-    = link_to new_program_path do
-      .btn.btn-success.ml-2
-        i.bi.bi-plus-square.pr-1
-        | Új
-
-  .field
-    = f.label "Platform:"
-    = f.select(:platform_id, Platform.all.collect {|u| [u.platform_name, u.id]}, :prompt => 'Válassz')
-    = link_to  new_platform_path do
-      .btn.btn-success.ml-2
-        i.bi.bi-plus-square.pr-1
-        | Új
-      
-        
+  .container-fluid
+    .form-blocks
     
-  .field
-    = f.label :description
-    = f.text_area :description, class: 'form-control col-3'
-  .field
-    = f.label :game_file
-    = f.file_field :game_files, class: 'form-control col-2'
-  
-  .actions = f.submit
-
-
-  
+      h2 Új fájl feltöltés
+    
+      p
+      - if params[:id].nil?
+        = f.label "Válassz játékot"
+        = f.select(:game_id, Game.all.collect {|u| [u.name, u.id]}, html: {class: 'form-control col-1'}, :prompt => 'Válassz')
+      - else
+        -if url_for(only_path: true).include?('edit')
+        - else
+          h5  Játék: #{Game.find(params[:id]).name }
+          
+          =f.hidden_field :game_id, value: params[:id]
+      .form-group
+        = f.text_field :version, class: 'form-control', placeholder: "Verzió"
+    
+      .form-group
+        = f.text_field :link_mega, class: 'form-control', placeholder: "MEGA.NZ Link"
+      
+      
+      
+      .input-group.mb-3
+        =f.select(:translater_id,  Translater.all.collect {|u| [u.translater_name, u.id]},{include_blank: "Készítők"}, { class: "form-control" })
+        
+        .input-group-append
+          = link_to "+", new_translater_path(), class: 'btn btn-primary append-btn'
+          
+      .input-group.mb-3
+        =f.select(:program_id,  Program.all.collect {|u| [u.program_name, u.id]},{include_blank: "Program"}, { class: "form-control" })
+        
+        .input-group-append
+          = link_to "+", new_program_path(), class: 'btn btn-primary append-btn'
+      
+      .input-group.mb-3
+        =f.select(:platform_id,  Platform.all.collect {|u| [u.platform_name, u.id]},{include_blank: "Platform"}, { class: "form-control" })
+        
+        .input-group-append
+          = link_to "+", new_platform_path(), class: 'btn btn-primary append-btn'
+      
+      
+      .form-group
+        =f.text_area :description, class: 'form-control rows=3'
+        
+      
+      .form-group
+        label for="coverImageUpload"  Borítókép
+        = f.file_field :game_files, class: 'form-control', id: "newGameCoverUpload"
+      
+      button.btn.btn-primary Fájl feltöltése »
+      

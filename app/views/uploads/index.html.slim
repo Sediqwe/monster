@@ -1,13 +1,13 @@
 h1 Listing uploads
 
-table.table-successtext-dark.border
+table.table-success.text-dark.table-striped.table-bordered
   thead
     tr
       th Game
       th Version
       th Description
       th Time
-      th
+      th Action
       
 
   tbody
@@ -26,4 +26,4 @@ table.table-successtext-dark.border
 br
 - if current_user.present? 
   -if current_user.admin?
-    = link_to 'New Upload', new_upload_path
+    = link_to 'New Upload', new_upload_path, class:"btn btn-primary"

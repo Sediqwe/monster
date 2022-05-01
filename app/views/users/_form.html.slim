@@ -8,19 +8,21 @@
           li = message
 
  
-    
-  .field
-    = f.label "Felhasználó:"
-    = f.text_field :name , readonly: true
-  .field
-    = f.label "Alias:"
-    = f.text_field :alias
-  .field
-    = f.label "Email:"
-    = f.text_field :email
-  .field
-    = f.label "jelszó:"
-    = f.text_field :password
- 
+  .container-fluid
   
-  .actions = f.submit "Beküld", class:"btn btn-success"
+    .form-blocks
+      h2 Adataid
+      .form-group
+        = f.label "Felhasználó:"
+        = f.text_field :name , readonly: true, class: "form-control"
+      .form-group
+        = f.label "Alias:"
+        = f.text_field :alias, class: "form-control"
+      .form-group
+        = f.label "E-mail:"
+        = f.text_field :email, class: "form-control"
+      .form-group
+        = f.label "Jelszó:"
+        = f.text_field :password, class: "form-control"
+      button.btn.btn-primary Beküld » 
+ 
