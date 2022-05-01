@@ -30,9 +30,7 @@ p id="notice"  = notice
                   |  Fájlok:(
                   =Upload.where(datum: upload.datum).size
                   |)
-                  |  Fájlok:(
-                  =Upload.where(datum: upload.datum).size
-                  |)
+                
             div id="collapse#{index}" class="panel-collapse collapse in #{ "show" if index==0}" aria-labelledby="heading_#{index}" role="tabpanel" 
               .panel-body.rounded
                 -Upload.where("datum like ?", upload.datum).each do |d|
