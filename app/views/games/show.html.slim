@@ -71,7 +71,7 @@
                   td = t.translater.translater_name
                   td = t.platform.platform_name
                   td = t.program.program_name
-                  td = number_to_human_size(t.game_files.byte_size)
+                  td = number_to_human_size(t.game_files.byte_size) if t.game_files.present?
                   td 
                     span data-bs-toggle="tooltip" title="#{t.description}" style="cursor: progress;"
                       = truncate(t.description, :length => 37, :separator => ' ')
