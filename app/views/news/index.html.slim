@@ -41,6 +41,6 @@ p id="notice"  = notice
                       |)
                       span.ml-2
                         |{
-                        = number_to_human_size(Upload.find(d.id).game_files.byte_size)
+                        = number_to_human_size(Upload.find(d.id).game_files.byte_size) if Upload.find(d.id).game_files.present?
                         |}
                       br
