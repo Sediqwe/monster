@@ -14,14 +14,14 @@
 
   <body class="text-light">
     <%= render 'shared/menu' %>
-    <div class="container-fluid pt-1">
+    <div class="container-fluid pt-5">
     <div class="page-content" id="content">
     <div id="flash">
     <% if notice.present? %>
       <%= render partial: "shared/notice" %>
     <% end %>
     <% if error.present? %>
-      <%= render partial: "shared/error" %>
+      <div class="alert alert-danger"><%= render partial: "shared/error" %>
     <% end %>
   </div></div>
 <div class="p-5">

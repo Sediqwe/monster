@@ -16,8 +16,8 @@ def authorized?
 end
 def admin?
   return if current_user.admin?
-  flash[:error] = 'Csak adminoknak!.'
-  redirect_to root_url
+    flash[:error] = 'Csak adminoknak!.'
+    redirect_to root_url
 end
   def record_attempts(note)
     @activity = ActivityLog.new

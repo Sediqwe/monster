@@ -1,6 +1,7 @@
 class UploadsController < ApplicationController
   before_action :set_upload, only: %i[ show edit update destroy ]
   before_action :authorized?
+  before_action :admin?
   # GET /uploads or /uploads.json
   def index
     @uploads = Upload.all

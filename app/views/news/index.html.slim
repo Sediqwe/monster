@@ -34,7 +34,7 @@ p id="notice"  = notice
             div id="collapse#{index}" class="panel-collapse collapse in #{ "show" if index==0}" aria-labelledby="heading_#{index}" role="tabpanel" 
               .panel-body.rounded
                 -Upload.where("datum like ?", upload.datum).each do |d|
-                    li
+                    li.text-light
                       = link_to "#{d.game.name} »", game_path(d.game.slug), class: "btn btn-link text-light"
                       |(v.:
                       = d.version 

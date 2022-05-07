@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :forums
   resources :news
   resources :blogs
   resources :programs

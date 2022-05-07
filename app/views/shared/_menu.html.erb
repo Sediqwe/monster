@@ -35,7 +35,11 @@
       
         <%= link_to " Fordítások", games_path , class: "nav-link text-light fas fa-language " %>
       </li>
+      <li class="nav-item <%= (url_for(only_path: true)) == "/forum" ? "active" : "" %> ">
 
+      
+        <%= link_to " Fórum", forums_path , class: "nav-link text-light fa fa-forumbee" %>
+      </li>
        <!--<li class="nav-item <%= (url_for(only_path: true)) == "/blogs" ? "active" : "" %> ">
 
       
