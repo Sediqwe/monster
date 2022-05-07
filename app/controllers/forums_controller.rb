@@ -1,7 +1,6 @@
 class ForumsController < ApplicationController
   before_action :set_forum, only: %i[ show edit update destroy ]
   before_action :authorized?
-  before_action :admin?
   
   # GET /forums or /forums.json
   def index
