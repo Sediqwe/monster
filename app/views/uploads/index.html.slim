@@ -6,6 +6,8 @@ table.table-success.text-dark.table-striped.table-bordered
       th Game
       th Version
       th Filename
+      th User
+      th User.Edit
       th Time
       th Action
       
@@ -16,9 +18,12 @@ table.table-success.text-dark.table-striped.table-bordered
         td = upload.game.name
         td = upload.version
         td = upload.game_files.filename
+        td = Translater.find(upload.translater_id).translater_name
         td 
           .input-group.mb-3
-            = select("edit_", upload.id, Translater.all.collect {|p| [ p.translater_name, p.id ] }, { include_blank: true })
+            - if current_user.present? 
+              -if current_user.admin?
+                = select("edit_", upload.id, Translater.all.collect {|p| [ p.translater_name, p.id ] }, { include_blank: true })
             
         td = upload.created_at
         td = link_to 'Show', upload
