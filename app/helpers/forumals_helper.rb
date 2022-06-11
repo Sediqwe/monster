@@ -1,0 +1,2 @@
+module ForumalsHelper
+end

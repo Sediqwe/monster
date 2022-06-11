@@ -3,7 +3,7 @@ class NewsController < ApplicationController
 
   # GET /news or /news.json
   def index
-    @uploads= Upload.select(:datum).order('datum desc').group(:datum).limit(30)
+    @uploads= Upload.select(:datum).order('datum desc').group(:datum).limit(10)
     
   end
 

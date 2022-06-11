@@ -1,0 +1,21 @@
+.container 
+  .row
+    .col
+      H2 
+      = Forum.find(params[:forum_id]).title
+      |   »
+    .col
+      - @forumals.each do |forum| 
+          .col
+            = link_to forumals_path(forum_id: forum.id) do |t|
+              .bg-secondary.rounded.border.border-dark
+                .col
+                  
+                  h3.text-light
+                    =forum.title 
+                    |   »
+                .col.ml-5.text-dark
+                  |#
+                  =forum.desc
+= link_to 'New Forumal id:', new_forumal_path(forum_id: params[:forum_id])
+

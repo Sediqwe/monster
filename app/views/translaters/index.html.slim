@@ -1,23 +1,25 @@
-h1 Listing Translaters
+- if current_user.present?
+  -if current_user.admin?
+    h1 Listing Translaters
 
-table
-  thead
-    tr
-      th Name
-     
-      th
-
-  tbody
-    - @translaters.each do |t|
-      tr
-        td = t.translater_name
+    table
+      thead
+        tr
+          th Name
         
-        td = link_to 'Show', t
-        td = link_to 'Edit', edit_translater_path(t)
-        - if current_user.present?
-          - if current_user.admin?
-            td = link_to 'Destroy', t, data: { confirm: 'Are you sure?' }, method: :delete
+          th
 
-br
+      tbody
+        - @translaters.each do |t|
+          tr
+            td = t.translater_name
+            
+            td = link_to 'Show', t
+            td = link_to 'Edit', edit_translater_path(t)
+            - if current_user.present?
+              - if current_user.admin?
+                td = link_to 'Destroy', t, data: { confirm: 'Are you sure?' }, method: :delete
 
-= link_to 'New Translater', new_translater_path
+    br
+
+    = link_to 'New Translater', new_translater_path
