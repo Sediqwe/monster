@@ -4,7 +4,7 @@ class UploadsController < ApplicationController
   before_action :admin?
   # GET /uploads or /uploads.json
   def index
-    @uploads = Upload.all.order(id: :asc)
+    @uploads = Upload.all.order(game_id: :asc)
   end
 
   # GET /uploads/1 or /uploads/1.json
