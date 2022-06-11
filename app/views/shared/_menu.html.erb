@@ -15,14 +15,16 @@
       <li class="nav-item <%= (url_for(only_path: true)) == "/games" ? "active" : "" %> ">
 
       
-        <%= link_to " Fordítások", games_path , class: "nav-link text-light fas fa-language " %>
+        <%= link_to " Fordítások", games_path , class: "nav-link text-light fas  fa-language " %>
       </li>
+     
+      <!--
       <li class="nav-item <%= (url_for(only_path: true)) == "/forum" ? "active" : "" %> ">
 
       
         <%= link_to " Fórum", forums_path , class: "nav-link text-light bi bi-megaphone" %>
       </li>
-       <!--<li class="nav-item <%= (url_for(only_path: true)) == "/blogs" ? "active" : "" %> ">
+       <li class="nav-item <%= (url_for(only_path: true)) == "/blogs" ? "active" : "" %> ">
 
       
         <%= link_to " Hogyan ?", blogs_path , class: "nav-link fa fa-drafting-compass " %>
@@ -57,6 +59,12 @@
         <%= link_to " Regisztráció", login_reg_path() , class: "nav-link text-light fas fa-plus " %>
       </li>
       <% end %>
+
+       <li class="nav-item <%= (url_for(only_path: true)) == "/stat" ? "active" : "" %> ">
+
+      
+        <%= link_to " Statisztika", stat_path , class: "nav-link text-light fa fa-info " %>
+      </li>
     </ul>
     <% if current_user.present? %>
     <div class=" text-light my-2 my-lg-0"">
