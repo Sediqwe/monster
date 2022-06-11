@@ -8,6 +8,28 @@ $(document).on('turbolinks:load', function() {
         $('a.hover').removeClass('hover');
         next();
       });
+      $('select[id^="edit_"]').on('click', function(){
+        var adat = $(this).val();
+        var id = $(this).attr('id').replace('edit_','');
+        if(adat>0){
+           $.ajax({
+          url: "/editorka",
+          type: "POST",
+          data: { product: { id: id, adat: adat} },
+          success: function(data) {
+            $('tr#'+ id).removeClass('bg-primary');
+            $('tr#' + id).addClass(' bg-success ');
+          },
+          error: function(data) {
+            // alert("ERROR" + data.valami);
+
+          }
+        })
+        }
+      }); 
+
+
+
       $('#letoltes_gomb').on('click', function(){
         var adat = $(this).attr('datagame');
         var done = $(this).attr('done');

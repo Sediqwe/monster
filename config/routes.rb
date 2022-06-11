@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :platforms
   resources :users
   post 'download', to: "games#download"
+  post 'editorka', to: "uploads#editorka"
   post 'upload_bad', to: "uploads#bad"
   post 'games_magyhu', to: "games#magyhu"
   resources :uploads

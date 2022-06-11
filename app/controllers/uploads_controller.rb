@@ -15,7 +15,12 @@ class UploadsController < ApplicationController
   def new
     @upload = Upload.new
   end
-
+  def editorka
+    @upload = Upload.find(editor_params[:id])
+    @upload.translater_id = editor_params[:adat]
+    @upload.save
+    
+  end
   # GET /uploads/1/edit
   def edit
   end
@@ -85,5 +90,8 @@ class UploadsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def upload_params
       params.require(:upload).permit(:name, :version, :description, :game_id, :game_files, :translater_id, :program_id , :platform_id, :link_mega )
+    end
+    def editor_params
+      params.require(:product).permit(:id, :adat )
     end
 end
