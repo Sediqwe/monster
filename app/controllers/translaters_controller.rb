@@ -1,9 +1,10 @@
 class TranslatersController < ApplicationController
   before_action :set_translater, only: %i[ show edit update destroy ]
+  before_action :authorized?, only: %i[new edit update destroy]
 
   # GET /translaters or /translaters.json
   def index
-    @translaters = Translater.all
+    @translaters = Translater.all.order(translater_name: :ASC)
   end
 
   # GET /translaters/1 or /translaters/1.json

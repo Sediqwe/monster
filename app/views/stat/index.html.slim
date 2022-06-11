@@ -1,13 +1,16 @@
 h2 Statisztikák:
-table.table-dark.table-striped
+table.table-primary.table-bordered.text-dark
     tr 
         td Userek
         td =@users
     tr
         td Adminok
-        td =@adminok  
+        td =@adminok 
     tr
-        td @Letöltések:
+        td Játék adatlapok:
+        td =@game_all 
+    tr
+        td Letöltések:
         td =@download  
     tr
         td @Letölthető fájlok:
