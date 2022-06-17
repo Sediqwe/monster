@@ -1,7 +1,7 @@
 module UploadsHelper
 
     def de_rebase
-        upload = Upload.where("name = ? ", nil )
+        upload = Upload.all
         upload.each do |p|
             
             p.name = Game.find(p.game_id).name
