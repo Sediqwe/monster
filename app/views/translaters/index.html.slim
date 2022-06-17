@@ -21,7 +21,7 @@ table.table-primary.table-bordered.text-dark.text-dark
             - Upload.where(translater_id: t.id).order(:name).each do |pd|
               tr
                 td style="width:400px" 
-                  = Game.find(pd.game_id).name
+                  = pd.name
                 td style="width:100px" 
                   = pd.version
                 td style="width:1000px" 
