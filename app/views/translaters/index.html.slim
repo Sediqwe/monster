@@ -4,7 +4,6 @@ table.table-primary.table-bordered.text-dark.text-dark
   thead
     tr
       th Neve
-    
       th Fordítás
       th 
       - if current_user.present?
@@ -19,13 +18,13 @@ table.table-primary.table-bordered.text-dark.text-dark
         td 
           table
 
-            - Upload.joins(:game).where(translater_id: t.id).order(:name).each do |pd|
+            - Upload.where(translater_id: t.id).order(:name).each do |pd|
               tr
-                td
+                td style="width:400px" 
                   = Game.find(pd.game_id).name
-                td
+                td style="width:100px" 
                   = pd.version
-                td 
+                td style="width:1000px" 
                   =pd.game_files.filename
               
         

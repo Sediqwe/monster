@@ -42,6 +42,7 @@ class UploadsController < ApplicationController
     @upload = Upload.new(upload_params)
     @upload.user_id = current_user.id
     @upload.datum = Date.today()
+    @upload.name = Game.find(@upload.game_id).name
     @upload.bad = false
     respond_to do |format|
       if @upload.save
