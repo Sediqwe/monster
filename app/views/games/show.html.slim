@@ -5,6 +5,12 @@
     /! datasheet__headline ez a datasheet konténerben lévő headline
     .datasheet__headline
       h1 =@game.name
+      - if current_user.present?
+        - if current_user.admin?
+          -if @game.done != true
+             = link_to "Van KÉSZ Magy.hu", games_magyhu_path(id: @game.id, type: "van"), method: :post, class: "btn btn-success"
+          -else
+            = link_to "Nincs kész Magy.hu", games_magyhu_path(id: @game.id, type: "nincs"), method: :post, class: "btn btn-danger"
     /! datasheet__image ez a képnek a tartója
     .datasheet__image
       - if @game.image.present?
