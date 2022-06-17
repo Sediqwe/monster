@@ -4,6 +4,6 @@ class StatController < ApplicationController
       @adminok = User.where(admin: [true]).count
       @download = Download.all.count
       @game_all = Game.all.count
-      @game_uploaded_file = Game.all.count
+      @game_uploaded_file = Upload.all.count
   end
 end

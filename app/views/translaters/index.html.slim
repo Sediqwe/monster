@@ -6,6 +6,7 @@ table.table-primary.table-bordered.text-dark.text-dark
       th Neve
     
       th Fordítás
+      th 
       - if current_user.present?
           - if current_user.admin?
             th Actions
@@ -15,6 +16,15 @@ table.table-primary.table-bordered.text-dark.text-dark
       tr
         td = t.translater_name 
         td = Upload.where(translater_id: t.id).count
+        td 
+          - Upload.where(translater_id: t.id).each do |pd|
+            |Game:
+            = Game.find(pd.game_id).name
+            |{
+            = pd.version
+            |} 
+            |Filename:(#{pd.game_files.filename})
+            br
         
         
         - if current_user.present?
