@@ -17,14 +17,17 @@ table.table-primary.table-bordered.text-dark.text-dark
         td = t.translater_name 
         td = Upload.where(translater_id: t.id).count
         td 
-          - Upload.where(translater_id: t.id).each do |pd|
-            |Game:
-            = Game.find(pd.game_id).name
-            |{
-            = pd.version
-            |} 
-            |Filename:(#{pd.game_files.filename})
-            br
+          table
+
+            - Upload.where(translater_id: t.id).each do |pd|
+              tr
+                td
+                  = Game.find(pd.game_id).name
+                td
+                  = pd.version
+                td 
+                  =pd.game_files.filename
+              
         
         
         - if current_user.present?
