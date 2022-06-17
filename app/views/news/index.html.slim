@@ -17,7 +17,7 @@ p id="notice"  = notice
     .col-12
       h3 Üdvözöllek a GÉPI magyarítások oldalon!
     .col
-      h4 Legutóbbi 10 napi feltöltés:
+      h4 Legutóbbi 10 nap feltöltése:
   .row
     .col
       #accordion.panel-group aria-multiselectable="true" role="tablist" 
@@ -38,7 +38,7 @@ p id="notice"  = notice
                       = link_to "#{d.game.name} »", game_path(d.game.slug), class: "btn btn-link text-light"
                       |(v.:
                       = d.version 
-                      |)
+                      |)(Készítő: #{Translater.find(d.translater_id).translater_name})
                       span.ml-2
                         |{
                         = number_to_human_size(Upload.find(d.id).game_files.byte_size) if Upload.find(d.id).game_files.present?
