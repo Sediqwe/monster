@@ -19,7 +19,7 @@ table.table-primary.table-bordered.text-dark.text-dark
         td 
           table
 
-            - Upload.where(translater_id: t.id).each do |pd|
+            - Upload.joins(:game).where(translater_id: t.id).order(:name).each do |pd|
               tr
                 td
                   = Game.find(pd.game_id).name
