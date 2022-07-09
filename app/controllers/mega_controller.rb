@@ -4,7 +4,7 @@ class MegaController < ApplicationController
     @storage = Rmega.login("szedmakistvan@yahoo.com", Rails.application.credentials.meganz)
     #public_url = 'https://mega.nz/file/IOxkzCSJ#1Wr88541pco5mQMgC9P2zTdBGnSD3BIvvBeo7dEUoX8'
     ##storage.download(public_url, 'tmp')
-    public_url = 'https://mega.nz/file/IOxkzCSJ#1Wr88541pco5mQMgC9P2zTdBGnSD3BIvvBeo7dEUoX8'
+    public_url = 'https://mega.nz/file/FFVWzbZB#ZKio5U5KoAdR7kZhwN_yXYmJPni6z5NMqatKPmGPKtA'
     Rmega.download(public_url, 'tmp').login("szedmakistvan@yahoo.com", Rails.application.credentials.meganz)
   end
 end
