@@ -11,7 +11,7 @@ class MegasController < ApplicationController
   end
   def download()
     
-      send_file "storage/meganz/" + params[:id]  + ".zip", :disposition => 'attachment'
+      send_file "file/" + params[:id]  + ".zip", :disposition => 'attachment'
   end
   # GET /megas/new
   def new
