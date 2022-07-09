@@ -9,10 +9,13 @@ class MegasController < ApplicationController
   # GET /megas/1 or /megas/1.json
   def show
   end
-  def download()
+  def download
+
     send_file "file/" + params[:id]  + ".zip", :disposition => 'attachment'
     edit = Mega.find(params[:mega_id])
-    edit.szamlalo += 1
+    temp = edit.szamlalo.to_i
+    temp += 1
+    edit.szamlalo = temp
     edit.save
   end
   # GET /megas/new
