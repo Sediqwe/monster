@@ -1,0 +1,24 @@
+table
+  thead
+    tr
+      th Title
+      th Link
+      th Active
+      th Version
+      th
+      th
+      th
+      
+  tbody
+    - @megas.each do |mega| 
+      tr
+        td = mega.title
+        td = link_to mega.link
+        td = mega.active 
+        td = mega.version 
+        td = link_to 'Show', mega 
+        td = link_to 'Edit', edit_mega_path(mega) 
+        td = link_to 'Destroy', mega, method: :delete, data: { confirm: 'Are you sure?'}  
+    
+
+= link_to 'New Mega', new_mega_path

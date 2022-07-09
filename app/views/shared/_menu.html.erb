@@ -72,12 +72,8 @@
       </li>
       <li class="nav-item <%= (url_for(only_path: true)) == "/mega" ? "active" : "" %> ">
 
-       <% if current_user.present? %>
-          <% if current_user.admin? %>
-            <%= link_to " Mega", mega_path , class: "nav-link text-light fa fa-info " %>
-            </li>
-          <% end %>
-        <% end %>
+       <%= link_to " Mega", megas_path , class: "nav-link text-light fa fa-info " %>
+            </li>       
     </ul>
     <% if current_user.present? %>
     <div class=" text-light my-2 my-lg-0"">
