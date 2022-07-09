@@ -9,7 +9,10 @@ class MegasController < ApplicationController
   # GET /megas/1 or /megas/1.json
   def show
   end
-
+  def download()
+    
+      send_file "tmp/" + params[:id]  + ".zip", :disposition => 'attachment'
+  end
   # GET /megas/new
   def new
     @mega = Mega.new

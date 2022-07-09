@@ -13,7 +13,8 @@ table
     - @megas.each do |mega| 
       tr
         td = mega.title
-        td = link_to mega.link
+        td = link_to "Letöltés" , download_path(id: mega.link), method: "post", class: "btn btn-success text-light m-2"
+          
         td = mega.active 
         td = mega.version 
         td = link_to 'Show', mega 
