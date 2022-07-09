@@ -5,6 +5,7 @@ gem 'rmega'
 gem 'image_processing'
 gem 'kaminari'
 gem "autocomplete-off"
+gem 'free_disk_space'
 ruby '2.7.2'
 gem 'active_storage_validations'
 gem 'friendly_id', '~> 5.4.0'

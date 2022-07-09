@@ -113,6 +113,8 @@ GEM
     ffi (1.15.5-x86-mingw32)
     font-awesome-rails (4.7.0.8)
       railties (>= 3.2, < 8.0)
+    free_disk_space (1.0.0)
+      sys-filesystem
     friendly_id (5.4.2)
       activerecord (>= 4.0.0)
     globalid (1.0.0)
@@ -277,6 +279,8 @@ GEM
     sshkit (1.21.2)
       net-scp (>= 1.1.2)
       net-ssh (>= 2.8.0)
+    sys-filesystem (1.4.3)
+      ffi (~> 1.1)
     temple (0.8.2)
     thor (1.2.1)
     thread_safe (0.3.6)
@@ -334,6 +338,7 @@ DEPENDENCIES
   capybara (>= 2.15)
   csv
   font-awesome-rails
+  free_disk_space
   friendly_id (~> 5.4.0)
   groupdate
   image_processing
