@@ -14,7 +14,7 @@ set :migration_command, 'db:migrate'
 set :conditionally_migrate, true
 
 
-append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets" "public/system", "public/uploads", "storage"
+append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets" "public/system", "public/uploads", "storage" , "file"
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp

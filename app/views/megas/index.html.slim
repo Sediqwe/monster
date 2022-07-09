@@ -1,10 +1,11 @@
-table
+table.bg-dark
   thead
     tr
       th Title
       th Link
       th Active
       th Version
+      th letöltve
       th
       th
       th
@@ -13,10 +14,11 @@ table
     - @megas.each do |mega| 
       tr
         td = mega.title
-        td = link_to "Letöltés" , download_path(id: mega.link), method: "post", class: "btn btn-success text-light m-2"
+        td = link_to "Letöltés" , download_path(id: mega.link, mega_id: mega.id), method: "post", class: "btn btn-success text-light m-2"
           
         td = mega.active 
-        td = mega.version 
+        td = mega.version
+        td = mega.szamlalo
         - if current_user.present?
           - if current_user.admin?
             td = link_to 'Show', mega 
