@@ -17,9 +17,12 @@ table
           
         td = mega.active 
         td = mega.version 
-        td = link_to 'Show', mega 
-        td = link_to 'Edit', edit_mega_path(mega) 
-        td = link_to 'Destroy', mega, method: :delete, data: { confirm: 'Are you sure?'}  
+        - if current_user.present?
+          - if current_user.admin?
+            td = link_to 'Show', mega 
+            td = link_to 'Edit', edit_mega_path(mega) 
+            td = link_to 'Destroy', mega, method: :delete, data: { confirm: 'Are you sure?'}  
     
-
-= link_to 'New Mega', new_mega_path
+- if current_user.present?
+  - if current_user.admin?
+    = link_to 'New Mega', new_mega_path
