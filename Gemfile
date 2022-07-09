@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 gem 'csv'
+gem 'rmega'
 gem 'image_processing'
 gem 'kaminari'
 gem "autocomplete-off"

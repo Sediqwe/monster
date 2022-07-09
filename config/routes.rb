@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'mega', to: 'mega#index'
   get 'stat', to: 'stat#index'
   resources :messages
   resources :forumals

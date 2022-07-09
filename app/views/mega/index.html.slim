@@ -1,0 +1,9 @@
+h1 Mega#index
+p Find me in app/views/mega/index.html.slim
+
+
+- @storage.root.folders.each do |folder|
+  = "Könyvtár:  #{folder.name} -->  #{folder.files.size} fájlt tartalmaz."
+
+- @storage.root.files.each do |file|
+    =  file.name
