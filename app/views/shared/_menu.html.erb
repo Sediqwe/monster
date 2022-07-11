@@ -63,17 +63,27 @@
        <li class="nav-item <%= (url_for(only_path: true)) == "/translaters" ? "active" : "" %> ">
 
       
-        <%= link_to " Készítők", translaters_path , class: "nav-link text-light fa fa-info " %>
+        <%= link_to " Készítők", translaters_path , class: "nav-link text-light fas fa-info " %>
       </li>
        <li class="nav-item <%= (url_for(only_path: true)) == "/stat" ? "active" : "" %> ">
 
       
-        <%= link_to " Statisztika", stat_path , class: "nav-link text-light fa fa-info " %>
+        <%= link_to " Statisztika", stat_path , class: "nav-link text-light fas fa-chart-line " %>
       </li>
       <li class="nav-item <%= (url_for(only_path: true)) == "/mega" ? "active" : "" %> ">
 
-       <%= link_to " Mega", megas_path , class: "nav-link text-light fa fa-info " %>
-            </li>       
+       <%= link_to  megas_path do |t| %>
+          <%= image_tag("mega.png") %> 
+        <%end%>
+            </li>
+         <% if current_user.present? %>
+           <% if current_user.admin? %>
+           <li class="nav-item <%= (url_for(only_path: true)) == "/lists" ? "active" : "" %> ">
+            
+              <%= link_to " Lista", lists_path , class: "nav-link text-light  fas fa-list" %>
+           </li>
+           <% end%>      
+         <% end%>      
     </ul>
     <% if current_user.present? %>
     <div class=" text-light my-2 my-lg-0"">

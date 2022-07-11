@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :lists
   resources :megas
   get 'mega', to: 'mega#index'
   get 'stat', to: 'stat#index'
