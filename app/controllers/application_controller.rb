@@ -3,7 +3,7 @@ helper_method :current_user
 add_flash_types :info, :error, :warning
 
 def default_url_options
-  { host: ENV["DOMAIN"] || "localhost:3000" }
+  { host: ENV["DOMAIN"] || "https://gep.monster" }
 end
 
 
