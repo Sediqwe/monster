@@ -1,34 +1,38 @@
-h1 Listing lists
+h1 Gépi Magyarítások #Lista
 
-table
+table.table.table-info.table-striped
   thead
     tr
-      th Title
-      th Desc
-      th Active
-      th List type
-      th Link
-      th Local
-      th Ready
-      th Version
-      th
-      th
-      th
+      th Név
+      th Hely
+      -current_user.present?
+        -current_user.admin?
+          th Active
+          th List type
+          th Link
+          th Local
+          th Ready
+          th Version
+          th
+          th
+          th
 
   tbody
     - @lists.each do |list|
       tr
         td = list.title
         td = list.desc
-        td = list.active
-        td = list.list_type
-        td = list.link
-        td = list.local
-        td = list.ready
-        td = list.version
-        td = link_to "Show", list
-        td = link_to "Edit", edit_list_path(list)
-        td = link_to "Destroy", list, data: {confirm: "Are you sure?"}, method: :delete
+        -current_user.present?
+          -current_user.admin?
+            td = list.active
+            td = list.list_type
+            td = list.link
+            td = list.local
+            td = list.ready
+            td = list.version
+            td = link_to "Show", list
+            td = link_to "Edit", edit_list_path(list)
+            td = link_to "Destroy", list, data: {confirm: "Are you sure?"}, method: :delete
 
 br
 
