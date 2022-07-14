@@ -15,7 +15,7 @@ class ListsController < ApplicationController
   def tomb_feldolgozo
     array2 = params[:post].split("\r\n")
     array2.each do |f|
-      code = List.new(title: f)
+      code = List.new(title: f, desc: params[:desc])
       code.save
     end
   end
