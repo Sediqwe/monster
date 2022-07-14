@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :megas
   get 'mega', to: 'mega#index'
   get 'stat', to: 'stat#index'
-  post 'download', to: 'megas#download'
+  post 'down', to: 'megas#download'
   resources :messages
   resources :forumals
   resources :forums

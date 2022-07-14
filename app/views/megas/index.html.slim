@@ -14,7 +14,7 @@ table.bg-dark
     - @megas.each do |mega| 
       tr
         td = mega.title
-        td = link_to "Letöltés" , download_path(id: mega.link, mega_id: mega.id), method: "post", class: "btn btn-success text-light m-2"
+        td = link_to "Letöltés" , down_path(id: mega.link, mega_id: mega.id), method: "post", class: "btn btn-success text-light m-2"
           
         td = mega.active 
         td = mega.version
