@@ -2,9 +2,9 @@ class ApplicationController < ActionController::Base
 helper_method :current_user  
 add_flash_types :info, :error, :warning
 
-def default_url_options
-  { host: ENV["DOMAIN"] || "https://gep.monster" }
-end
+#def default_url_options
+  #{ host: ENV["DOMAIN"] || "https://gep.monster" }
+#end
 
 
 def current_user

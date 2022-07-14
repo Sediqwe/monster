@@ -24,6 +24,8 @@ Rails.application.routes.draw do
   get 'login/signin', to: 'sessions#new'
   get 'login/signout'
   get 'login/reg'
+  get 'tomb', to: 'lists#tomb'
+  post 'tomb', to: 'lists#tomb_feldolgozo'
 root 'games#index'
 post 'login/create'
 post 'sessions/create'

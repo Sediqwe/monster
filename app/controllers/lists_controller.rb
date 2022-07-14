@@ -10,6 +10,16 @@ class ListsController < ApplicationController
   def show
   end
 
+  def tomb
+  end
+  def tomb_feldolgozo
+    array2 = params[:post].split("\r\n")
+    array2.each do |f|
+      code = List.new(title: f)
+      code.save
+    end
+  end
+
   # GET /lists/new
   def new
     @list = List.new
