@@ -35,5 +35,6 @@ table.table.table-info.table-striped
             td = link_to "Destroy", list, data: {confirm: "Are you sure?"}, method: :delete
 
 br
-
-= link_to "New List", new_list_path
+-current_user.present?
+  -current_user.admin?
+    = link_to "New List", new_list_path
