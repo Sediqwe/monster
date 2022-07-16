@@ -1,4 +1,4 @@
--current_user.admin?
+- if current_user.admin?
   = form_for @list do |f|
     - if @list.errors.any?
       #error_explanation
