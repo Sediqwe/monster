@@ -71,12 +71,9 @@
         <%= link_to " Statisztika", stat_path , class: "nav-link text-light fas fa-chart-line " %>
       </li>
       <li class="nav-item <%= (url_for(only_path: true)) == "/mega" ? "active" : "" %> ">
-
-       <%= link_to  megas_path do |t| %>
-          <%= image_tag("mega.png") %> 
-        <%end%>
+        <%= link_to " Óriás fájlok", megas_path , class: "nav-link text-light fas fa-chart-line " %>
             </li>
-           <li class="nav-item <%= (url_for(only_path: true)) == "/lists" ? "active" : "" %> ">
+           <li class="nav-item <%= (url_for(only_path: true)) == "/megas" ? "active" : "" %> ">
             
               <%= link_to " Lista", lists_path , class: "nav-link text-light  fas fa-list" %>
            </li>

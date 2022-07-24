@@ -26,6 +26,7 @@ Rails.application.routes.draw do
   get 'login/reg'
   get 'tomb', to: 'lists#tomb'
   post 'tomb', to: 'lists#tomb_feldolgozo'
+  get 'lists_update', to: 'lists#lista_frissites'
 root 'games#index'
 post 'login/create'
 post 'sessions/create'

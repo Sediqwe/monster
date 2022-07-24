@@ -1,6 +1,10 @@
 h1 Gépi Magyarítások #Lista
+- if current_user.present?
+  - if current_user.admin?
+    = link_to "New List", new_list_path
+    br
 
-table.table.table-info.table-striped
+table.table.table-info.table-striped.text-dark
   thead
     tr
       th Név
@@ -35,6 +39,4 @@ table.table.table-info.table-striped
             td = link_to "Destroy", list, data: {confirm: "Are you sure?"}, method: :delete
 
 br
-- if current_user.present?
-  - if current_user.admin?
-    = link_to "New List", new_list_path
+

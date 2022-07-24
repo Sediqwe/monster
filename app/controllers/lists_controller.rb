@@ -3,7 +3,15 @@ class ListsController < ApplicationController
 
   # GET /lists or /lists.json
   def index
-    @lists = List.all.order(:title)
+    if current_user.admin?
+      
+      @lists = List.all.order(:title)
+       
+    else
+      @lists = List.all.order(:title).where(active: :true)
+      
+    end
+    
   end
 
   # GET /lists/1 or /lists/1.json
@@ -19,7 +27,9 @@ class ListsController < ApplicationController
       code.save
     end
   end
-
+  def lista_frissites
+    List.update(active: :true)
+  end
   # GET /lists/new
   def new
     @list = List.new
