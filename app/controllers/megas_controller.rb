@@ -11,7 +11,7 @@ class MegasController < ApplicationController
   end
   def download
 
-    send_file "file/" + params[:id]  + ".zip", :disposition => 'attachment'
+    send_file "file/" + params[:id], :disposition => 'attachment'
     edit = Mega.find(params[:mega_id])
     temp = edit.szamlalo.to_i
     temp += 1
