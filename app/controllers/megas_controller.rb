@@ -3,7 +3,7 @@ class MegasController < ApplicationController
   
   # GET /megas or /megas.json
   def index
-    @megas = Mega.all
+    @megas = Mega.all.order(:title)
   end
 
   # GET /megas/1 or /megas/1.json
