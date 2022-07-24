@@ -3,7 +3,7 @@ class ListsController < ApplicationController
 
   # GET /lists or /lists.json
   def index
-      @lists = List.all.order(:title).where(active: :true)
+      @lists = List.all.order(:title)
   end
 
   # GET /lists/1 or /lists/1.json
