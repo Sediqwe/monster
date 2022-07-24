@@ -3,15 +3,7 @@ class ListsController < ApplicationController
 
   # GET /lists or /lists.json
   def index
-    if current_user.present?
-      if current_user.admin?
-        @lists = List.all.order(:title)
-      end
-    else
       @lists = List.all.order(:title).where(active: :true)
-      
-    end
-    
   end
 
   # GET /lists/1 or /lists/1.json
