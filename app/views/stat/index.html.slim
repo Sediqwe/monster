@@ -25,4 +25,5 @@ table.table-primary.table-bordered.text-dark
     tr
         td  @Legtöbbször letöltött fájl:
         td     
-= FreeDiskSpace.megabytes('/')
+|FreeSpace: 
+= number_to_human_size(FreeDiskSpace.bytes('/'))
