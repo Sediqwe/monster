@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class ForumalTest < ActiveSupport::TestCase
+class User2Test < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end
